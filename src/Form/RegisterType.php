@@ -59,8 +59,16 @@ class RegisterType extends AbstractType
                 'invalid_message' => 'Passwort und Bestätigung müssen identisch sein',
                 'label' => 'Passwort',
                 'required' => true,
-                'first_options' => ['label'=> ' Passwort'],
-                'second_options' => ['label' => 'Bestätigen Sie Ihr Passwort'],
+                'first_options' => [
+                    'label'=> ' Passwort',
+                    'attr' => [
+                        'placeholder' => 'Schreiben Sie Ihr Passwort'
+                    ]],
+                'second_options' => [
+                    'label' => 'Bestätigen Sie Ihr Passwort',
+                    'attr' => [
+                        'placeholder' => 'Schreiben Sie Ihre Passwortbestätigung',
+                    ]],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Bestätigen'
