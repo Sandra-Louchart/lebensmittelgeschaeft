@@ -1,0 +1,14 @@
+$font-title: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-text: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$primary: #D5AD86;
+$secondary: #A9B843;
+$light: #F2F6F9;
+$dark: #415E09;
+$idontknow: #573133;
+$test: #D43636;
+$spacing: 8px;
+$spacing-2: calc(var(--spacing) * 2);
+$spacing-3: calc(var(--spacing) * 3);
+$spacing-4: calc(var(--spacing) * 4);
+$box-shadow: 3px 3px 15px 0(0,0,0,0.75);
+$border-radius: 8px;

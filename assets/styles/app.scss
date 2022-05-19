@@ -1,0 +1,31 @@
+@import 'variablen.scss';
+@import "~bootstrap/scss/bootstrap";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+   h1, h2, h3, h4 {
+        font-family: $font-title;
+    }
+
+    margin: 0;
+    color: $dark;
+    font-family: $font-text;
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+
+    }
+  //
+  //.bild {
+  //  background-image: url("assets/images/bild1.jpg");
+  //}
+
+
+}
