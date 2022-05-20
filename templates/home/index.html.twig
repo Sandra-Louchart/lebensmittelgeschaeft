@@ -2,16 +2,20 @@
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('home') }}
+
 {% endblock %}
 
 {% block title %} Willkommen in unseren Bioladen {% endblock %}
 
 {% block body %}
     <section class="homeTop d-flex page-content justify-content-center">
-        <img class ="homePicture" src="images/bild1.jpg" alt="bild">
+        <img class="homePicture" src="images/bild2.jpg" alt="image principale">
         <div class="homeTxt d-flex flex-column justify-content-around align-items-center align-self-center">
-            <div class="main-title">
-                <h1>Willkommen in unserem Shop für Bio- un Regionalprodukte</h1>
+            <div class="main-title"><h1>Willkommen,</h1>
+                <div>
+                    <span>in unserem Shop für Bio- und Regionalprodukte! </span>
+                </div>
             </div>
         </div>
     </section>
