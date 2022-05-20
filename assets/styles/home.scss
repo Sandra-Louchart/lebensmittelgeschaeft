@@ -1,0 +1,51 @@
+@import "app";
+
+.homeTop {
+  height: 100vh;
+  width: 100%;
+  background: rgba(50, 50, 50, 0.6);
+
+  .homePicture {
+    object-position: center;
+    object-fit: cover;
+  }
+
+  img {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    right: 0;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    z-index: -1;
+    opacity: 1;
+  }
+
+  .homeTxt {
+    width: 80%;
+    padding-top: 80px;
+  }
+
+  .homeTxt * {
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+    color: $light;
+    text-align: center;
+  }
+}
+.main-title {
+  font-size: $font-size-h1;
+
+  h1 {
+    font-family: $font-text;
+    font-weight: 200;
+    letter-spacing: 2px;
+    font-size: $font-size-h1;
+  }
+
+  span {
+    font-size: $font-title
+  }
+}
