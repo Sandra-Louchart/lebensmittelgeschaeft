@@ -23,9 +23,15 @@
                     <li class="nav-item mx-3">
                         <a class="nav-link" href="#">Kontakt</a>
                     </li>
+                    {% if app.user %}
                     <li class="nav-item mx-3">
-                        <a class="nav-link" href="#">Mein Konto</a>
+                        <a class="nav-link" href="{{ path ('account') }}">Mein Konto</a> | <a class="nav-link" href="{{ path ('app_logout' )}}">Ausloggen</a>
                     </li>
+                    {% else %}
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="{{ path('register' )}}">Anmeldung</a> | <a class="nav-link" href="{{ path ('app_login' )}}">Verbindung</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

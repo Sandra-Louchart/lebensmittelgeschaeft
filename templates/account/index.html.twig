@@ -1,0 +1,19 @@
+{#{% extends 'base.html.twig' %}#}
+
+{% block title %}Hello AccountController!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper" >
+    <h1>Meinn konto</h1>
+
+    <p> Willkommen {{ app.user.firstname}} in Ihrem Konto </p>
+
+
+    <a href =" {{ path('account_password') }} " >Ändere mein Passwort</a>
+
+
+
+</div>
+{% endblock %}
