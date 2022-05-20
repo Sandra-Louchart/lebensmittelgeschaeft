@@ -9,9 +9,15 @@
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
-{% block header %}{% include '_navBar.html.twig' %}{% endblock %}<body>
+
+<body>
+
+{% block navbar %}{% include '_navBar.html.twig' %}{% endblock %}
 
 {% block body %}{% endblock %}
+
+{% block footer %}{% include '_footer.html.twig' %}{% endblock %}<body>
+
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}

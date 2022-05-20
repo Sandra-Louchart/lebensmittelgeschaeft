@@ -1,0 +1,137 @@
+@import "app";
+
+.homeTop {
+  height: 100vh;
+  width: 100%;
+
+  .homePicture {
+    object-position: center;
+    object-fit: cover;
+  }
+
+  img {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    right: 0;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    z-index: -1;
+    opacity: 1;
+  }
+
+  .homeTxt {
+    width: 80%;
+    padding-top: 80px;
+    background: $light;
+
+  }
+
+  .homeTxt * {
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+    color: $idontknow;
+    text-align: center;
+  }
+
+}
+
+.main-title {
+  font-size: $font-size-h1;
+
+
+  h1 {
+    font-family: $font-text;
+    font-weight: 200;
+    letter-spacing: 2px;
+    font-size: $font-size-h1;
+
+  }
+
+  span {
+    font-size: $font-title
+  }
+}
+
+@media screen and (min-width: 1100px) {
+
+  .main-title {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: $big-title;
+    span {
+      font-size: $font-size-h1;
+    }
+  }
+
+  .main-title:first-of-type {
+    /* For increasing performance
+                       ID/Class should've been used.
+                       For a small demo
+                       it's okaish for now */
+    animation: showup 7s;
+  }
+
+  .main-title:last-of-type {
+    animation: reveal 7s;
+
+  }
+
+  .main-title:last-of-type span {
+    animation: slidein 7s;
+  }
+
+  @keyframes showup {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slidein {
+    0% {
+      margin-left: -50vw;
+      opacity: 0;
+    }
+    20% {
+      margin-left: -40vw;
+      opacity: 0;
+    }
+    35% {
+      margin-left: -20px;
+    }
+    100% {
+      margin-left: 0px;
+    }
+  }
+
+  @keyframes reveal {
+    0% {
+      width: 0;
+    }
+    20% {
+      width: 60vw;
+    }
+    30% {
+      width: 100vw;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      width: 100vw;
+    }
+  }
+}

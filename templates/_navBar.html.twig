@@ -1,8 +1,8 @@
-{% block navBar %}
+{% block navbar %}
 
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Bioläden</a>
+            <a class="navbar-brand" href="#">Bioladen</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,12 +24,18 @@
                         <a class="nav-link" href="#">Kontakt</a>
                     </li>
                     {% if app.user %}
-                    <li class="nav-item mx-3">
-                        <a class="nav-link" href="{{ path ('account') }}">Mein Konto</a> | <a class="nav-link" href="{{ path ('app_logout' )}}">Ausloggen</a>
-                    </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="{{ path ('account') }}">Mein Konto</a>
+                        </li>
+                        <li class = "nav-item mx-3">
+                            <a class="nav-link" href="{{ path ('app_logout' )}}">Abmelden</a>
+                        </li>
                     {% else %}
                         <li class="nav-item mx-3">
-                            <a class="nav-link" href="{{ path('register' )}}">Anmeldung</a> | <a class="nav-link" href="{{ path ('app_login' )}}">Verbindung</a>
+                            <a class="nav-link" href="{{ path('register' )}}">Registrieren</a>
+                        </li>
+                        <li class = "nav-item mx-3">
+                            <a class="nav-link" href="{{ path ('app_login' )}}">Anmelden</a>
                         </li>
                     {% endif %}
                 </ul>

@@ -21,11 +21,17 @@ body {
       right: 0;
       z-index: 5;
 
-    }
-  //
-  //.bild {
-  //  background-image: url("assets/images/bild1.jpg");
-  //}
+      .nav-item{
+        color: $dark;
+      }
 
+    }
+
+  .footer {
+    .text-footer{
+      color: $light;
+    }
+
+  }
 
 }

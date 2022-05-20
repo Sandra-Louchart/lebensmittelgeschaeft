@@ -2,9 +2,33 @@
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('home') }}
+
 {% endblock %}
 
-{% block title %} Home {% endblock %}
+{% block title %} Willkommen in unseren Bioladen {% endblock %}
 
 {% block body %}
+    <section class="homeTop d-flex page-content justify-content-center">
+        <img class="homePicture" src="images/bild2.jpg" alt="Erstes Bild">
+        <div class="homeTxt d-flex flex-column justify-content-around align-items-center align-self-center">
+            <div class="main-title"><h1>Willkommen,</h1>
+                <div>
+                    <span>in unserem Shop für Bio- und Regionalprodukte! </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div>
+            <h1>
+                Warum uns wählen ?
+
+                Heutzutage möchte jeder in der Lage sein, qualitativ hochwertige und frische Produkte zu essen. Aber wie nach einem Arbeitstag zu tun. Aus diesem Grund haben wir unseren Online-Bioladen erstellt, der es Ihnen ermöglicht, innerhalb von 48 Stunden (Montag bis Samstag) frische und regionale Produkte zu liefern.
+
+            </h1>
+        </div>
+    </section>
+
 {% endblock %}
+
