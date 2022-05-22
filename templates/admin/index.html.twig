@@ -1,0 +1,42 @@
+{% extends 'base_admin.html.twig' %}
+
+
+{% block title %}Admin{% endblock %}
+
+{% block stylesheets %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+    <section class="blockAdmin">
+    <h1 class="text-center ">Willkommen im Admin-Panel</h1>
+    <div class="container-fluid pt-5 text-center">
+        <div class="row justify-content-around">
+            <div class="card my-2 d-flex align-items-center">
+                <img class="icon card-img-top pt-3" src="images/Kategorie.jpg" alt="">
+                <div class="card-body">
+                    <h2 class="titreH2">Kategorie</h2>
+                    <a href="" class="btn btn-primary">Verwalten</a>
+                </div>
+            </div>
+
+            <div class="card my-2 d-flex align-items-center">
+                <img class="icon card-img-top pt-3" src="images/Produkt.jpg" alt="">
+                <div class="card-body">
+                    <h2 class="titreH2">Produkt</h2>
+                    <a href="" class="btn btn-primary">Verwalten</a>
+                </div>
+            </div>
+
+            <div class="card my-2 d-flex align-items-center">
+                <img class="icon card-img-top pt-3" src="images/kunden.jpg" alt="">
+                <div class="card-body">
+                    <h2 class="titreH2">Kunden</h2>
+                    <a href="" class="btn btn-primary">Verwalten</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+{% endblock %}

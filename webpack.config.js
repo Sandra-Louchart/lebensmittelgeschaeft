@@ -26,6 +26,8 @@ Encore
     .addEntry('register', './assets/js/register.js')
 
     .addEntry('home', './assets/styles/home.scss')
+    .addEntry('admin', './assets/styles/admin.scss')
+
 
 
 
