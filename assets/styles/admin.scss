@@ -20,23 +20,24 @@
 
 }
 
-//.vich-file {
-//  & .form-group{
-//    display: none;
-//  }
-//
-//  & a {
-//    display: none;
-//  }
-//}
-//
-//label {
-//  color: $dark;
-//}
+.vich-file {
+  & .form-group{
+    display: none;
+  }
 
-//.idImage {
-//  width: 300px;
-//}
+  & a {
+    display: none;
+  }
+}
+
+label {
+  color: $dark;
+}
+
+.idImage {
+  width: 18rem;
+  height: 18rem;
+}
 
 //.custom-file-input ~ .custom-file-label:lang(fr)::after {
 //  content: "Parcourir...";

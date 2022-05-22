@@ -16,7 +16,6 @@
                     <th>Name</th>
                     <th>Picture</th>
                     <th>Subtitle</th>
-                    <th>Description</th>
                     <th>Price</th>
                     <th>Actions</th>
                 </tr>
@@ -24,10 +23,11 @@
                 <tbody>
                 {% for product in products %}
                     <tr>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.pictureName }}</td>
+                        <td class="text-center">{{ product.name }}</td>
+                        <td>
+                            <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="idImage img-thumbnail rounded float-start">
+                        </td>
                         <td>{{ product.subtitle }}</td>
-                        <td>{{ product.description }}</td>
                         <td>{{ product.price }}</td>
                         <td class="text-center">
                             <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_show', {'id': product.id}) }}">show</a>
