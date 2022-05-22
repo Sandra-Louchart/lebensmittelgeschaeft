@@ -1,0 +1,91 @@
+@import "app.scss";
+@import "variablen.scss";
+
+
+.blockAdmin{
+  padding-top: 80px;
+}
+.titreH2 {
+  font-size: $font-size-h3;
+}
+
+.card {
+  width: 18rem;
+}
+
+.icon {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+}
+
+.vich-file {
+  & .form-group{
+    display: none;
+  }
+
+  & a {
+    display: none;
+  }
+}
+
+label {
+  color: $dark;
+}
+
+.idImage {
+  width: 18rem;
+  height: 18rem;
+}
+
+//.custom-file-input ~ .custom-file-label:lang(fr)::after {
+//  content: "Parcourir...";
+//}
+
+@media screen and (max-width: 1150px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+//.navbar {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  z-index: 5;
+//
+//  .nav-item{
+//    color: $dark;
+//  }
+//
+//}
+//
+//.card > img {
+//  object-fit: cover;
+//  width: 100%;
+//  height: 100%;
+//  filter: contrast(50%);
+//}
+//
+//.text-section {
+//  font-size: $spacing-2;
+//}
+//
+//a > .card:hover {
+//  .text-section {
+//    font-size: $spacing-4;
+//  }
+//  //box-shadow: 2px 2px 8px 2px $grey2;
+//}
+//
+//.card {
+//  width: 340px;
+//  height:370px;
+//}
+//
+//.titleAdmin {
+//  padding-top: $spacing-5;
+//  padding-bottom: $spacing-5;
+//}
+//

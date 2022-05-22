@@ -1,0 +1,47 @@
+{% extends 'base_admin.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block title %}Products index{% endblock %}
+
+{% block body %}
+    <section class="blockAdmin">
+        <h1 class="title text-center mb-5 mt-xxl-5">Admin Produckt</h1>
+        <div class="container">
+            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_new') }}">Create new</a>
+            <table class="table table-responsive-lg text-dark">
+                <thead class="thead-light text-center">
+                <tr>
+                    <th>Name</th>
+                    <th>Picture</th>
+                    <th>Subtitle</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td class="text-center">{{ product.name }}</td>
+                        <td>
+                            <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="idImage img-thumbnail rounded float-start">
+                        </td>
+                        <td>{{ product.subtitle }}</td>
+                        <td>{{ product.price }}</td>
+                        <td class="text-center">
+                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_show', {'id': product.id}) }}">show</a>
+                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_edit', {'id': product.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="text-danger" colspan="10">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}
