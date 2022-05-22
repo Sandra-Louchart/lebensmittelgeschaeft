@@ -27,6 +27,8 @@ Encore
 
     .addEntry('home', './assets/styles/home.scss')
     .addEntry('admin', './assets/styles/admin.scss')
+    .addEntry('product', './assets/styles/products.scss')
+
 
 
 

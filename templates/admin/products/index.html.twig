@@ -1,45 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
 
 {% block title %}Products index{% endblock %}
 
 {% block body %}
-    <h1>Products index</h1>
+    <section class="blockAdmin">
+        <h1 class="title text-center mb-5 mt-xxl-5">Admin Produckt</h1>
+        <div class="container">
+            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_new') }}">Create new</a>
+            <table class="table table-responsive-lg text-dark">
+                <thead class="thead-light text-center">
+                <tr>
+                    <th>Name</th>
+                    <th>Picture</th>
+                    <th>Subtitle</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.pictureName }}</td>
+                        <td>{{ product.subtitle }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.price }}</td>
+                        <td class="text-center">
+                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_show', {'id': product.id}) }}">show</a>
+                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_edit', {'id': product.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="text-danger" colspan="10">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>PictureName</th>
-                <th>Subtitle</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.pictureName }}</td>
-                <td>{{ product.subtitle }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_products_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_products_edit', {'id': product.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_products_new') }}">Create new</a>
 {% endblock %}
