@@ -1,5 +1,8 @@
 @import "app.scss";
 
+.blockBody{
+  margin-top: 80px;
+}
 .single-product {
   width: 18rem;
 }
@@ -11,4 +14,8 @@
   width: 18rem;
   background-color: $primary;
 }
+//.pictureProduct {
+//  width: 50px;
+//  height: 50px;
+//}
 

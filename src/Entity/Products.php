@@ -7,6 +7,8 @@ use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 #[ORM\Entity(repositoryClass: ProductsRepository::class)]
@@ -18,7 +20,9 @@ class Products
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 55)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(min: 2, max: 55)]
     private $name;
 
     #[Vich\UploadableField(mapping: 'products_pictures', fileNameProperty: 'pictureName')]
@@ -34,6 +38,8 @@ class Products
     private $description;
 
     #[ORM\Column(type: 'float')]
+    #[Assert\Positive]
+    #[Assert\LessThan(200)]
     private $price;
 
     #[ORM\Column(type: 'datetime')]
@@ -134,4 +140,5 @@ class Products
 
         return $this;
     }
+
 }
