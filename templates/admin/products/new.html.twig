@@ -1,11 +1,17 @@
 {% extends 'base_admin.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
 
 {% block title %}New Products{% endblock %}
 
 {% block body %}
-    <h1>Create new Products</h1>
+    <section class="blockAdmin">
+        <h1 class="title text-center mb-5 mt-xxl-5">Neue Produkt</h1>
+        <div class = "container">
+            {{ include('admin/products/_form.html.twig') }}
+            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_index') }}">back to list</a>
+        </div>
+    </section>
 
-    {{ include('admin/products/_form.html.twig') }}
-
-    <a href="{{ path('app_products_index') }}">back to list</a>
 {% endblock %}

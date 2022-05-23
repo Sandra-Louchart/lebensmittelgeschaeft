@@ -14,37 +14,39 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class SearchType extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('string', TextType::class, [
                 'label' => false,
                 'required' => false,
-
+                'attr' => [
+                    'placeholder' => 'Votre recherche ...',
+                    'class' => 'form-control-sm'
+                ]
             ])
             ->add('categories', EntityType::class, [
                 'label' => false,
-                'required' =>false,
+                'required' => false,
                 'class' => Category::class,
                 'multiple' => true,
-                'expanded' => true,
-                'choice_label'=> 'name'
+                'expanded' => true
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Filter',
+                'label' => 'Filtrer',
                 'attr' => [
-                    'class' => 'btn-block btn-primary'
+                    'class' => 'btn-block btn-info'
                 ]
             ])
-
         ;
     }
-    public function configureOptions(OptionsResolver $resolver): void
+
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Search::class,
-            'method' =>'GET',
-            'csrf_protection' => false,
+            'method' => 'GET',
+            'crsf_protection' => false,
         ]);
     }
 
@@ -52,5 +54,4 @@ class SearchType extends AbstractType
     {
         return '';
     }
-
 }
