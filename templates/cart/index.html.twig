@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+{{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('product') }}
+
+
+{% endblock %}
+
+
+{% block body %}
+<section class="blockBody">
+    <h1>Votre panier </h1>
+    {% if cart | length > 0 %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in cart %}
+                <tr>
+                    <td>{{ product.product.name }}</td>
+                    <td>{{ product.product.price }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>
+                        <a href="{{ path ('decrease_to_cart', {'id' :product.product.id}) }}" > - </a>
+                        <a href="{{ path ('app_add_direct_cart', {'id' :product.product.id}) }}" > + </a>
+                    </td>
+                    <td>{{ product.product.price * product.quantity }}</td>
+                    <td>
+                        <a href="{{ path('app_delete_cart', {'id': product.product.id}) }}" class="btn btn-sm btn-danger">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-xxl-center mb-5">
+            <b>Total : </b> <br/>
+            <p> {{ total }} €</p>
+            <a href="" class="btn btn-dark btn-block mt-3 ">Valider le panier</a>
+
+        </div>
+
+
+    {% else %}
+        <p>Surprise, c'est vide !</p>
+    {% endif %}
+</section>
+{% endblock %}
