@@ -34,7 +34,7 @@ class CartController extends AbstractController
 
 
         return $this->render('cart/index.html.twig', [
-            "items" => $panierWithData,
+            "cart" => $panierWithData,
             "total" => $total
         ]);
     }
@@ -56,7 +56,7 @@ class CartController extends AbstractController
     }
 
     #[Route('/delete/{id}', name:'app_delete_cart')]
-    public function remove($id, SessionInterface $session)
+    public function delete($id, SessionInterface $session)
     {
         $panier = $session->get('panier', []);
 
@@ -67,6 +67,37 @@ class CartController extends AbstractController
         $session->set('panier', $panier);
 
         return $this->redirectToRoute('app_cart');
+    }
+
+    #[Route('/cart/decrease/{id}', name:'decrease_to_cart')]
+    public function decrease($id, SessionInterface $session){
+        $panier = $session->get('panier', []);
+
+        if (!empty( $panier[$id] ) && ($panier[$id] > 1)) {
+            $panier[$id]--;
+        } else {
+            unset($panier[$id]);
+        }
+
+         $session->set('panier', $panier);
+        return $this->redirectToRoute('app_cart');
+
+    }
+
+    #[Route('/cart/add_direct/{id}', name: 'app_add_direct_cart')]
+    public function addDirect($id, SessionInterface $session)
+    {
+        $panier = $session->get('panier', []);
+
+        if (empty($panier[$id])) {
+            $panier[$id] = 0;
+        }
+
+        $panier[$id]++;
+
+        $session->set('panier', $panier);
+
+        return $this->redirectToRoute("app_cart");
     }
 }
 
