@@ -11,22 +11,34 @@
 {% block body %}
 <section class="blockBody">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <h3>Filter</h3>
             {{ form(form) }}
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <h3>Unserer Products</h3>
-            <div class="row product-container">
+            <div class="row product-container m-lg-5">
                 {% for product in products %}
-                    <div class="col-md-4">
-                        <div class="product-item text-center">
-                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                            <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="img-fluid pictureProduct">
-                            <h5>{{ product.name }}</h5>
-                            <h2 class="titreH2">{{ product.subtitle }}</h2>
-                            <h2 class="titreH2">{{ product.price }}</h2>
+                    <div class="col-md-4 mt-3 ">
+                        <div class="card">
+                            <div class="bd-image">
+                                <a href="{{ path('app_product_show', {'id': product.id}) }}"><img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="img-fluid pictureProduct"></a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                            </div>
+                            <div class="card-footer">
+                                {{ product.price }}€
+                            </div>
                         </div>
+{#                        <div class="product-item text-center">#}
+{#                            #}
+
+{#                            <h5></h5>#}
+{#                            <span class="product-subtitle"></span>#}
+{#                            <span class="product-price"> </span>#}
+{#                            </a>#}
+{#                        </div>#}
                     </div>
                 {% endfor %}
             </div>
