@@ -24,7 +24,7 @@
 
   .homeTxt {
     width: 80%;
-    padding-top: 80px;
+    padding-top: 40px;
     background: $light;
 
   }
@@ -46,7 +46,7 @@
     font-family: $font-text;
     font-weight: 200;
     letter-spacing: 2px;
-    font-size: $font-size-h1;
+    font-size: $font-size-h2;
 
   }
 
@@ -63,7 +63,7 @@
     white-space: nowrap;
     font-size: $big-title;
     span {
-      font-size: $font-size-h1;
+      font-size: $font-size-h2;
     }
   }
 
