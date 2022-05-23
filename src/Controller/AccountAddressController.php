@@ -35,7 +35,7 @@ class AccountAddressController extends AbstractController
             $address->setUser($this->getUser());
             $this->entityManager->persist($address);
             $this->entityManager->flush();
-            $this->redirectToRoute('app_account_address');
+            return $this->redirectToRoute('app_account_address');
 
         }
 
@@ -43,4 +43,42 @@ class AccountAddressController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    #[Route('/konto/edit_address/{id}', name: 'app_account_edit_address')]
+    public function edit(Request $request, $id)
+    {
+        $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
+
+        if (!$address || $address->getUser() != $this->getUser()) {
+            return $this->redirectToRoute('app_account_address');
+        }
+
+        $form = $this->createForm(AddressType::class, $address);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->flush();
+            return $this->redirectToRoute('app_account_address');
+        }
+
+        return $this->render('account/address_add.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/konto/delete_address/{id}', name: 'app_account_delete_address')]
+    public function delete($id)
+    {
+        $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
+
+        if ($address && $address->getUser() == $this->getUser()) {
+            $this->entityManager->remove($address);
+            $this->entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_account_address');
+    }
+
+
 }
