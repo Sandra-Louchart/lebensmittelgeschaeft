@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('account') }}
+{% endblock %}
+
+{% block title %}Hello adress!{% endblock %}
+
+
+
+{% block body %}
+<section class="blockBody">
+
+    <div class="example-wrapper mt-5">
+
+        <h1>Adress</h1>
+        {% if app.user.addresses | length ==0 %}
+            <p>Vous n'avez pas d'adresse</p>
+        {% else %}
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

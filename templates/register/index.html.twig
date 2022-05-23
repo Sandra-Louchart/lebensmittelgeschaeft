@@ -1,10 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('account') }}
+
+
+{% endblock %}
+
 {% block title %}Hello RegisterController!{% endblock %}
 
 
 
 {% block body %}
+    <section class="blockBody">
 
 <div class="example-wrapper mt-5">
 
@@ -14,7 +22,7 @@
     {{ form (form) }}
 </div>
 
-
+    </section>
 {% endblock %}
 {% block javascripts %}
 {% endblock %}
