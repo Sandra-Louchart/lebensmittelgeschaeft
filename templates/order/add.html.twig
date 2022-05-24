@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('product') }}
+
+{% endblock %}
+
+{% block title %}Hello OrderController!{% endblock %}
+
+{% block body %}
+    <section class="blockBody">
+        <h2>Je passe ma commande</h2>
+        <p>Choissisez vos preferences avant de passer commande</p>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Mon adresse de livraison</strong><br/>
+                <div class="form-check mt-4">
+                    {{ delivery|raw }}
+                </div>
+                <hr>
+                <strong>Mon transporteur</strong><br/>
+                <div class="form-check">
+                    {{ carrier.name }}<br/>
+                    {{ carrier.description }}<br/>
+                    {{ (carrier.price)|number_format(2, ',', '.') }} €
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <b>Ma commande</b><br/>
+                </div>
+                <div class="order-summary">
+                    {% set total = null %}
+                {% for key,product in cart %}
+                    <div class="col row {% if key > 0 %}mt-2{% endif %}">
+                        <div class="col-4">
+                            {{ product.product.name }}
+                        </div>
+                        <div class="col-4">
+                            x {{ product.quantity }}
+                        </div>
+                    </div>
+                    <div class="col-4 my-auto">
+                        {{ ((product.product.price * product.quantity ))|number_format(2, ',', '.') }} €
+                    </div>
+                </div>
+                {% set total = total + (product.product.price * product.quantity) %}
+                {% endfor %}
+            </div>
+
+            <hr>
+            <strong>Sous-Total : </strong> {{ (total)|number_format(2, ',', '.') }} €<br/>
+            <strong>Livraison : </strong> {{ (carrier.price)|number_format(2, ',', '.') }} €
+            <hr>
+            <strong>Total : </strong> {{ ((total) + (carrier.price))|number_format(2, ',', '.') }} €
+
+            <a class="btn btn-success btn-block mt-3" id="checkout-button">Payer | {{ ((total) + (carrier.price))|number_format(2, ',', '.') }} €</a>
+        </div>
+    </section>
+{% endblock %}
