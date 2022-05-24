@@ -1,0 +1,11 @@
+<div class="container">
+    {% set formHtml %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="text-center">
+        <button class="btn btn-primary btn m-3">{{ button_label|default('Save') }}</button>
+    </div>
+    {{ form_end(form) }}
+    {% endset %}
+    {{ formHtml | replace ({'[br]': '<br/>'}) | raw }}
+</div>

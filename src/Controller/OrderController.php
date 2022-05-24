@@ -22,7 +22,7 @@ class OrderController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/order', name: 'app_order' , methods: ['POST'])]
+    #[Route('/order', name: 'app_order')]
     public function index(Cart $cart, Request $request): Response
     {
         if (!$this->getUser()->getAddresses()->getValues())
@@ -39,7 +39,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/order/recapitulatif', name: 'app_order_recap')]
+    #[Route('/order/recapitulatif', name: 'app_order_recap', methods: ['POST'])]
     public function add(Cart $cart, Request $request): Response
     {
         $form =$this->createForm(OrderType::class, null, [
