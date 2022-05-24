@@ -10,7 +10,7 @@
 
 {% block body %}
 <section class="blockBody">
-    <div class="row">
+    <div class="row m-2">
         <div class="col-md-2">
             <h3>Filter</h3>
             {{ form(form) }}
@@ -21,8 +21,10 @@
                 {% for product in products %}
                     <div class="col-md-4 mt-3 ">
                         <div class="card">
-                            <div class="bd-image">
-                                <a href="{{ path('app_product_show', {'id': product.id}) }}"><img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="img-fluid pictureProduct"></a>
+                            <div class="bd-image mx-auto text-center">
+                                <a href="{{ path('app_product_show', {'id': product.id}) }}">
+                                    <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class=" pictureProduct ">
+                                </a>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.name }}</h5>

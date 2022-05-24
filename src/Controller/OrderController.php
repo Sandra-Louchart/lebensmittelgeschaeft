@@ -108,16 +108,13 @@ class OrderController extends AbstractController
                 'line_items' => [[
                     $products_for_stripe,
                 ]],
-                dd($products_for_stripe),
-
-
-            'mode' => 'payment',
+                dd($products_for_stripe), 'mode' => 'payment',
                 'success_url' => $YOUR_DOMAIN . '/success.html',
                 'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
             ]);
 
-            header("HTTP/1.1 303 See Other");
-            header("Location: " . $checkout_session->url);
+//            header("HTTP/1.1 303 See Other");
+//            header("Location: " . $checkout_session->url);
 
             dump($checkout_session->id);
 
