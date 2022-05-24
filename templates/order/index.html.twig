@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('product') }}
+
+{% endblock %}
+
+{% block title %}Hello OrderController!{% endblock %}
+
+{% block body %}
+<section class="blockBody">
+        <h2>Je passe ma commande</h2>
+        <p>Choissisez vos preferences avant de passer commande</p>
+        <hr>
+    <div class="row">
+        <div class="col-md-6">
+            {% set formHtml %}
+                {{ form(form) }}
+            {% endset %}
+            {{ formHtml | replace ({'[br]': '<br/>'}) | raw }}
+            <b>Transporteur</b>
+        </div>
+        <div class="col-md-6">
+            <b>Recap commande</b><br/>
+            <b>Bouton payer</b>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}

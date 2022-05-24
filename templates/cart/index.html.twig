@@ -21,6 +21,7 @@
             </tr>
             </thead>
             <tbody>
+            {% set total = null %}
             {% for product in cart %}
                 <tr>
                     <td>{{ product.product.name }}</td>
@@ -30,19 +31,20 @@
                         <a href="{{ path ('decrease_to_cart', {'id' :product.product.id}) }}" > - </a>
                         <a href="{{ path ('app_add_direct_cart', {'id' :product.product.id}) }}" > + </a>
                     </td>
-                    <td>{{ product.product.price * product.quantity }}</td>
+                    <td>{{ ((product.product.price * product.quantity)) }}</td>
                     <td>
                         <a href="{{ path('app_delete_cart', {'id': product.product.id}) }}" class="btn btn-sm btn-danger">
                         </a>
                     </td>
                 </tr>
+                {% set total = total + (product.product.price * product.quantity) %}
             {% endfor %}
             </tbody>
         </table>
         <div class="text-xxl-center mb-5">
             <b>Total : </b> <br/>
-            <p> {{ total }} €</p>
-            <a href="" class="btn btn-dark btn-block mt-3 ">Valider le panier</a>
+            <p>{{ total }}€</p>
+            <a href="{{ path('app_order') }}" class="btn btn-dark btn-block mt-3 ">Valider le panier</a>
 
         </div>
 
