@@ -7,6 +7,8 @@ use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Form\OrderType;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,6 +77,8 @@ class OrderController extends AbstractController
             $this->entityManager->persist($order);
 
 
+            $products_for_stripe = [];
+
             foreach ($cart->getFull() as $product) {
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
@@ -84,9 +88,40 @@ class OrderController extends AbstractController
                 $orderDetails->setTotal($product ['product']->getPrice() * $product['quantity']);
                 $this->entityManager->persist($orderDetails);
 
-            }
+                $products_for_stripe[] = [
+                    'name' => $product['product']->getName(),
+                    'price' => $product ['product']->getPrice(),
+                    'quantity' => $product['quantity'],
 
+                ];
+
+
+            }
 //            $this->entityManager->flush();
+//STRIPE
+
+            Stripe::setApiKey('sk_test_51L2xg3HTzwG93SGE4HJFo8P5KuWa3PIznDhn5jlhoD7xiwAKAi80YFIzxZ1IWUJnalHni0wkNUv8cOnvu7DtGPLk00dXhCkDWE');
+
+            $YOUR_DOMAIN = 'http://127.0.0.1:8000';
+
+            $checkout_session = Session::create([
+                'line_items' => [[
+                    $products_for_stripe,
+                ]],
+                dd($products_for_stripe),
+
+
+            'mode' => 'payment',
+                'success_url' => $YOUR_DOMAIN . '/success.html',
+                'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
+            ]);
+
+            header("HTTP/1.1 303 See Other");
+            header("Location: " . $checkout_session->url);
+
+            dump($checkout_session->id);
+
+
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
