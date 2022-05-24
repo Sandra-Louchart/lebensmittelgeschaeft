@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Class\Cart;
 use App\Entity\Order;
+use App\Entity\OrderDetails;
 use App\Form\OrderType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +14,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
-    #[Route('/order', name: 'app_order')]
+
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    #[Route('/order', name: 'app_order' , methods: ['POST'])]
     public function index(Cart $cart, Request $request): Response
     {
         if (!$this->getUser()->getAddresses()->getValues())
@@ -62,14 +72,29 @@ class OrderController extends AbstractController
             $order->setDelivery($delivery_content);
             $order->setIsPaid(0);
 
+            $this->entityManager->persist($order);
+
+
             foreach ($cart->getFull() as $product) {
-                dd($product);
+                $orderDetails = new OrderDetails();
+                $orderDetails->setMyOrder($order);
+                $orderDetails->setProduct($product['product']->getName());
+                $orderDetails->setQuantity($product['quantity']);
+                $orderDetails->setPrice($product ['product']->getPrice());
+                $orderDetails->setTotal($product ['product']->getPrice() * $product['quantity']);
+                $this->entityManager->persist($orderDetails);
 
             }
 
+//            $this->entityManager->flush();
+            return $this->render('order/add.html.twig', [
+                'cart' => $cart->getFull(),
+                'carrier' => $carriers,
+                'delivery' => $delivery_content,
+            ]);
         }
-        return $this->render('order/add.html.twig', [
-            'cart' => $cart->getFull(),
-        ]);
+
+        return $this->redirectToRoute('app_cart');
+
     }
 }
