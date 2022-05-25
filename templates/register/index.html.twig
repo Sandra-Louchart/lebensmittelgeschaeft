@@ -3,27 +3,21 @@
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
     {{ encore_entry_link_tags('account') }}
-
-
 {% endblock %}
 
-{% block title %}Hello RegisterController!{% endblock %}
-
-
+{% block title %}Neu Konto{% endblock %}
 
 {% block body %}
     <section class="blockBody">
+        <div class="container m-3">
+            <h1 class="mt-5 mb-5 font-weight-normal text-center">Anmeldung neu konto</h1>
+            <div class="mt-5">
+                {{ form(form) }}
+            </div>
+            <div class="text-center mt-lg-3 mb-5">
+                <a class="btn btn-secondary" href="{{ path ('app_login') }}">Login</a>
+            </div>
 
-<div class="example-wrapper mt-5">
-
-    <h1>Anmeldung</h1>
-
-    </div>
-    {{ form (form) }}
-</div>
-
+        </div>
     </section>
 {% endblock %}
-{% block javascripts %}
-{% endblock %}
-
