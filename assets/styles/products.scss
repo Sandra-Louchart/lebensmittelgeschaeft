@@ -10,10 +10,6 @@
   font-size: $font-size-h3;
 }
 
-.card {
-  //width: 18rem;
-  background-color: $light;
-}
 
 .product-container {
   margin-bottom: 150px;
@@ -21,5 +17,6 @@
 
 .pictureProduct {
   height: 250px;
+  object-fit: cover;
   width: 100%;
 }
