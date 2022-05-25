@@ -36,12 +36,12 @@ class Cart
         return $session->get('cart');
     }
 
-//    public function remove()
-//    {
-//        $session = $this->requestStack->getSession();
-//
-//        $session->remove('cart');
-//    }
+    public function remove()
+    {
+        $session = $this->requestStack->getSession();
+
+        $session->remove('cart');
+    }
 
     public function delete($id)
     {
