@@ -28,6 +28,8 @@ body {
     }
 
   .footer {
+    position: absolute;
+    width: 100%;
     .text-footer{
       color: $light;
     }
