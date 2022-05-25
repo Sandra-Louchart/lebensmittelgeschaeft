@@ -1,19 +1,48 @@
-{#{% extends 'base.html.twig' %}#}
+{% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountController!{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('account') }}
+{% endblock %}
+{% block title %}Konto{% endblock %}
 
 {% block body %}
-
 <section class="blockBody">
+    <div class="container m-5">
+        <h1 class="mb-5">Mein konto</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+        <small><a href="/admin">Gehen Sie zum Admin-Panel</a> </small> <br/>
+        {% endif %}
 
-<div class="example-wrapper" >
-    <h1>Meinn konto</h1>
+        <p> Willkommen {{ app.user.firstname}} in Ihrem Konto </p>
+        <p>Hier haben Sie Zugriff auf alle persönliche Informationen, die Sie über dieses Konto erfahren haben.</p>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="account-item text-center">
+                    <a href =" {{ path('account_password') }} " >
+                    <img class="icon-item"src="images/Produkt.jpg" alt="neu passwort"><br/>
+                        <p>Ändere mein Passwort</p></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('app_account_address') }}">
+                <div class="account-item text-center">
+                    <img src="images/Kunden.jpg" alt="adress"><br/>
+                    <p>Meine Adress</p></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#">
+                <div class="account-item text-center">
+                    <img src="images/Kunden.jpg" alt="bestellungen"><br/>
+                    <p>Meine Bestellungen</p></a>
+                </div>
+            </div>
 
-    <p> Willkommen {{ app.user.firstname}} in Ihrem Konto </p>
 
 
-    <a href =" {{ path('account_password') }} " >Ändere mein Passwort</a>
-
+    </div>
 
 
 </div>

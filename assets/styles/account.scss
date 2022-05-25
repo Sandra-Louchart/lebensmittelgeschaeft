@@ -3,3 +3,25 @@
 .blockBody{
   margin-top: 80px;
 }
+
+.account-item{
+  background-color: $primary;
+  padding:$spacing-4;
+
+  a{
+    text-transform: uppercase;
+    font-size: $font-size-h4;
+    color: $dark;
+    font-weight: bold;
+
+    hover{
+      text-decoration: none;
+      color:$dark
+    }
+  }
+}
+.icon-item{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
