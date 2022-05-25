@@ -7,17 +7,18 @@
 
 {% block body %}
 <section class="blockBody">
-    <h1 class="m-3">Votre panier </h1>
+    <div class="container">
+    <h1 class="mt-5 ">Votre panier </h1>
     <div class="p-5 m-2">
 
     {% if cart | length > 0 %}
         <table class="table mt-3">
             <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Quantité</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Total</th>
+                <th scope="col">Produktname</th>
+                <th scope="col">Anzahl</th>
+                <th scope="col">Preis</th>
+                <th scope="col">Summe</th>
                 <th scope="col"></th>
 
             </tr>
@@ -49,10 +50,10 @@
             </tbody>
         </table>
         <div class="text-xxl-center mb-5">
-            <b>Total : </b> <br/>
+            <b>Summe : </b> <br/>
             <p>{{ total }}€</p>
-            <a href="{{ path('app_order') }}" class="btn btn-dark btn-block mt-3 ">Valider le panier</a>
-            <a href="{{ path('app_products') }}" class="btn btn-secondary btn-block mt-3 ">Retour produit</a>
+            <a href="{{ path('app_order') }}" class="btn btn-dark btn-block mt-3 ">Bestätigen Sie den Warenkorb</a>
+            <a href="{{ path('app_products') }}" class="btn btn-secondary btn-block mt-3 ">Zurück zum Produkt</a>
 
 
         </div>
@@ -60,7 +61,10 @@
 
 
     {% else %}
-        <p>Surprise, c'est vide !</p>
-    {% endif %}
+        <p>Entschuldigung, Ihr Warenkorb ist leer</p>
+        <a href="{{ path('app_products') }}" class="btn btn-secondary btn-block mt-3 ">Zurück zum Produkt</a>
+
+        {% endif %}
+    </div>
 </section>
 {% endblock %}

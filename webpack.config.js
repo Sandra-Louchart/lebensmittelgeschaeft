@@ -29,6 +29,8 @@ Encore
     .addEntry('admin', './assets/styles/admin.scss')
     .addEntry('product', './assets/styles/products.scss')
     .addEntry('account', './assets/styles/account.scss')
+    .addEntry('order', './assets/styles/order.scss')
+
 
 
 
