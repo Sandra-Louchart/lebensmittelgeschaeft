@@ -17,7 +17,7 @@ class OrderType extends AbstractType
         $user = $options['user'];
         $builder
             ->add('addresses', EntityType::class, [
-                'label' => 'Adresse de livraison',
+                'label' => 'Lieferadresse',
                 'required' => true,
                 'class' =>Address::class,
                 'choices' =>$user->getAddresses(),
@@ -25,7 +25,7 @@ class OrderType extends AbstractType
                 'expanded' => true
             ])
             ->add('carriers', EntityType::class, [
-                'label' => 'Transporteur',
+                'label' => 'Lieferant',
                 'required' => true,
                 'class' =>Carrier::class,
                 'multiple' => false,
@@ -33,7 +33,7 @@ class OrderType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider la commande',
+                'label' => 'Bestätigen Sie Ihre Bestellung',
                 'attr' => [
                     'class' => 'btn btn-secondary btn-block'
                 ]

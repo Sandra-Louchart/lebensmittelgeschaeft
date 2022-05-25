@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
-    {{ encore_entry_link_tags('product') }}
+    {{ encore_entry_link_tags('order') }}
 
 {% endblock %}
 
@@ -10,15 +10,16 @@
 
 {% block body %}
 <section class="blockBody">
-        <h2>Mon recapitulatif</h2>
-        <p>Verififer vos info avant de payer</p>
+    <div class="container m-5">
+        <h2>Zusammenfassung Ihrer Bestellung</h2>
+        <p>Überprüfen Sie Ihre Informationen, bevor Sie bezahlen</p>
         <hr>
     <div class="row">
         <div class="col-md-6">
             {% set formHtml %}
                 {{ form_start(form, {action:path('app_order_recap')}) }}
-                {{ form_label(form.addresses, 'Choisissez votre adresse de livraison') }}
-                <a href="{{ path('app_account_add_address') }}">Ajouter une nouvelle adresse</a>
+                {{ form_label(form.addresses, 'Wählen Sie eine Lieferadresse') }}
+                <a href="{{ path('app_account_add_address') }}">Füge eine neue Adresse hinzu</a>
 
                 {{ form_end(form) }}
 
@@ -26,7 +27,10 @@
             {{ formHtml | replace ({'[br]': '<br/>'}) | raw }}
         </div>
         <div class="col-md-6">
-            <h2>Le recapitulatif de votre commande</h2>
+            <div class="text-center">
+                <h2>Ihre Bestellung</h2>
+            </div>
+            <div class="order-summary">
             {% for product in cart %}
                 <div class="col row">
                     <div class="col-6">
@@ -37,9 +41,9 @@
                     </div>
                 </div>
             {% endfor %}
+            </div>
         </div>
-
-
+    </div>
     </div>
 </section>
 {% endblock %}
