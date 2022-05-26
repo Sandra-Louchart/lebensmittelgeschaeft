@@ -63,7 +63,6 @@ class OrderController extends AbstractController
             $delivery_content .= '<br/>' .$delivery->getPostal(). ' '.$delivery->getCity();
             $delivery_content .= '<br/>' .$delivery->getCountry();
 
-
             $order = new Order();
             $reference = $date->format('dmY'). '-'. uniqid();
             $order->setReference($reference);
