@@ -60,7 +60,7 @@ class StripeController extends AbstractController
             'success_url' => $YOUR_DOMAIN . '/order/success/{CHECKOUT_SESSION_ID}',
             'cancel_url' => $YOUR_DOMAIN . '/order/cancel/{CHECKOUT_SESSION_ID}',
         ]);
-        $order->setStripeSessionId($checkout_session->url);
+        $order->setStripeSessionId($checkout_session->id);
         $entityManager->flush();
 
         return $this->redirect($checkout_session->url);

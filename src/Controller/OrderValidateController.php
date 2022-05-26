@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Class\Cart;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,17 +20,27 @@ class OrderValidateController extends AbstractController
     }
 
     #[Route('order/success/{stripeSessionId}', name: 'app_order_validate')]
-    public function index($stripeSessionId): Response
+    public function index($stripeSessionId, Cart $cart): Response
     {
         $order = $this->entityManager->getRepository(Order::class)->findOneByStripeSessionId($stripeSessionId);
 
-        return $this->render('order_validate/index.html.twig');
+        if (!$order || $order->getUser() != $this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
+        if(!$order->isIsPaid()) {
+
+            $cart ->remove();
+            $order->setIsPaid(1);
+            $this->entityManager->flush();
+        }
+        return $this->render('order_validate/index.html.twig', [
+            'order' => $order,
+        ]);
     }
 }
 
-//    if (!$order || $order->getUser() != $this->getUser()) {
-//        return $this->redirectToRoute('home');
-//    }
+
 
 //    if ($order->getState() == 0) {
 //        // Vider la session "cart"
@@ -38,7 +49,7 @@ class OrderValidateController extends AbstractController
 //        // Modifier le statut isPaid de notre commande en mettant 1
 //        $order->setState(1);
 //        $this->entityManager->flush();
-//
+
 //        // Envoyer un email à notre client pour lui confirmer sa commande
 //        $mail = new Mail();
 //        $content = "Bonjour ".$order->getUser()->getFirstname()."<br/>Merci pour votre commande.<br><br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam expedita fugiat ipsa magnam mollitia optio voluptas! Alias, aliquid dicta ducimus exercitationem facilis, incidunt magni, minus natus nihil odio quos sunt?";

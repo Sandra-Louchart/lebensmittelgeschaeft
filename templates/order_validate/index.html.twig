@@ -6,13 +6,23 @@
 
 {% endblock %}
 
-{% block title %}Hello OrderValidateController!{% endblock %}
+{% block title %}Bestellung validieren{% endblock %}
 
 {% block body %}
 <section class="blockBody">
+    <div class="container">
+        <h1 class="mb-5">Ihre Bestellung wurde validiert</h1>
     <p>
-        <h1>Votre commande a ete validée</h1>
+        Hallo <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong>,<br/><br/>
+        Vielen Dank für Ihre Bestellung Nr.<strong>{{ order.reference }}</strong>.<br/>
+        Eine Bestätigung wurde Ihnen soeben per E-Mail an  <strong>{{ order.user.email }}</strong> gesendet.
+    <hr>
+    Ihre Bestellung wird von <strong>{{ order.carrierName }}</strong>  an folgende Adresse geliefert: <br/>
+    {{ order.delivery|raw }}
+    <hr>
+    Um Ihre Bestellung zu verfolgen, gehen Sie zu Ihrem <a href="{{ path('account') }}">Konto</a>.
     </p>
+    </div>
 </section>
 
 {% endblock %}
