@@ -127,6 +127,11 @@ class Order
         return $this;
     }
 
+    public function __toString(): string
+    {
+        return $this->getUser(). '[br]'.$this->getCarrierName(). '-' .$this->getDelivery();
+    }
+
     /**
      * @return Collection<int, OrderDetails>
      */
