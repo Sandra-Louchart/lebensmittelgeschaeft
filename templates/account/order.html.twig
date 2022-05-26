@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('account') }}
+{% endblock %}
+
+{% block title %}meine Bestellungen{% endblock %}
+
+{% block body %}
+<section class="blockBody">
+    <div class="container m-5">
+        <h1 class="mb-5">Meine Bestellungen</h1>
+        {% if orders | length ==0 %}
+            <p>Sie haben keine Bestellung</p>
+        {% else %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Bestellung am</th>
+                <th scope="col">Bestellnummer</th>
+                <th scope="col">Produkt</th>
+                <th scope="col">Summe</th>
+                <th scope="col"></th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.createAt |date('d/m/Y') }}</td>
+                    <td>{{ order.reference }}</td>
+                    <td>{{ order.orderDetails|length }}</td>
+                    <td>{{ ((order.carrierPrice + order.getTotal) /100) | number_format(2) }} €</td>
+                    <td><a href="{{ path('app_account_order_show', {'reference' : order.reference} )}}"> Einzelheiten der Bestellung</a></td>
+
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+            </section>
+
+        {% endif %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('account') }}
+{% endblock %}
+
+{% block title %}meine Bestellungen Nr {{ order.reference }}{% endblock %}
+
+{% block body %}
+    <section class="blockBody">
+    <div class="container m-5">
+    <h1 class="mb-5">Meine Bestellungen {{ order.reference }}</h1>
+        <p><strong>Bestellung am : </strong> {{ order.createAt |date('d/m/Y') }}</p>
+    <p><strong>Bestellnummer : </strong> {{ order.reference }}</p>
+        <p><strong>Lieferant : </strong> {{ order.carriername }}</p>
+        <p><strong>Einzelheiten</strong></p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Produkt</th>
+                <th scope="col">Anzahl</th>
+                <th scope="col">Einzelpreis</th>
+                <th scope="col">Summe</th>
+                <th scope="col"></th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in order.orderDetails %}
+                <tr>
+                    <td>{{ product.product }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ (product.price /100) | number_format(2) }} €</td>
+                    <td>{{ product.total | number_format(2) }} € </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-end">
+            <strong>Zwischensumme :</strong> {{ (order.getTotal / 100)|number_format(2, ',', '.') }} €<br/>
+            <strong>Lieferpreis :</strong> {{ (order.carrierprice)|number_format(2, ',', '.') }} €<br/>
+            <strong>Summe : </strong> {{ (order.carrierPrice + (order.getTotal / 100))|number_format(2, ',', '.') }} €
+        </div>
+
+    </div>
+    </section>
+
+{% endblock %}
