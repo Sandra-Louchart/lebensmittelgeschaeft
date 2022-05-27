@@ -9,7 +9,10 @@
 
 import '../styles/app.scss';
 
-// import Vue from 'vue';
+import {createApp} from 'vue';
+import products from './components/ListProducts';
+
+createApp(products).mount('#app');
 
 
 // start the Stimulus application
