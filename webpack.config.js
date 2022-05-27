@@ -14,7 +14,6 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
-    .enableVueLoader()
 
     /*
      * ENTRY CONFIG
@@ -24,6 +23,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('register', './assets/js/register.js')
+    .addEntry('products', './assets/js/products.js')
 
     .addEntry('home', './assets/styles/home.scss')
     .addEntry('admin', './assets/styles/admin.scss')
@@ -73,6 +73,8 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    .enableVueLoader()
+
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
