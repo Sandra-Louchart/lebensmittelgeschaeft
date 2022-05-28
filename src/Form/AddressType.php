@@ -17,64 +17,61 @@ class AddressType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Quel nom souhaitez-vous donner à votre adresse ?',
+                'label' => 'Welchen Namen möchten Sie dieser Adresse geben?',
                 'attr' => [
-                    'placeholder' => 'Nommez votre adresse'
+                    'placeholder' => 'Nennen Sie Ihre Adresse'
                 ]
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'Votre prénom',
+                'label' => 'Ihr Vorname',
                 'attr' => [
-                    'placeholder' => 'Entrez votre prénom'
+                    'placeholder' => 'Geben Sie Ihren Vornamen ein'
                 ]
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'Votre nom',
+                'label' => 'Ihr Nachname',
                 'attr' => [
-                    'placeholder' => 'Entre votre nom'
+                    'placeholder' => 'Geben Sie Ihren Nachnamen ein'
                 ]
             ])
             ->add('company', TextType::class, [
-                'label' => 'Votre société',
+                'label' => 'Ihr Firma',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => '(facultatif) Entrez le nom de votre société'
+                    'placeholder' => '(Optional) Geben Sie Ihren Firmennamen ein'
                 ]
             ])
             ->add('address', TextType::class, [
-                'label' => 'Votre adresse',
+                'label' => 'Ihr Adresse',
                 'attr' => [
-                    'placeholder' => '8 rue des lylas ...'
+                    'placeholder' => 'Geben Sie Ihren Adressen ein'
                 ]
             ])
             ->add('postal', TextType::class, [
-                'label' => 'Votre code postal',
+                'label' => 'Ihre Postleitzahl',
                 'attr' => [
-                    'placeholder' => 'Entrez votre code postal'
+                    'placeholder' => 'Geben Sie Ihre Postleitzahl ein'
                 ]
             ])
             ->add('city', TextType::class, [
-                'label' => 'Ville',
+                'label' => 'Ihr Stadt',
                 'attr' => [
-                    'placeholder' => 'Entrez votre ville'
+                    'placeholder' => 'Geben Sie Ihre Stadt ein '
                 ]
             ])
             ->add('country', CountryType::class, [
-                'label' => 'Pays',
-                'attr' => [
-                    'placeholder' => 'Votre pays'
-                ]
+                'label' => 'Ihre Land',
             ])
             ->add('phone', TelType::class, [
-                'label' => 'Votre téléphone',
+                'label' => 'Ihr Telefonnummer',
                 'attr' => [
-                    'placeholder' => 'Entrez votre téléphone'
+                    'placeholder' => 'Trage Ihre Telefonnummer ein'
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider',
+                'label' => 'Bestätigen',
                 'attr' => [
-                    'class' => 'btn-block btn-black'
+                    'class' => 'btn-block btn-secondary'
                 ]
             ])
         ;
