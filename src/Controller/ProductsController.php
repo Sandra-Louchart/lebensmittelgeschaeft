@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Class\Search;
 use App\Entity\Products;
 use App\Form\SearchType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -41,18 +42,24 @@ class ProductsController extends AbstractController
             $products = $this->entityManager->getRepository(Products::class)->findAll();
         }
 
-        return $this->render('products/index.html.twig', [
-            'products' => $products,
-            'form' => $form->createView()
-        ]);
+        $arrayCollection = array();
+        foreach($products as $product) {
+            $arrayCollection[] =array(
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'image' => $product->getPictureName()
+
+            );
+        }
+
+        return new JsonResponse($arrayCollection);
 
     }
 
     #[Route('/produkt/{id}', name: 'app_product_show', methods: ['GET'])]
-    public function show(Products $product): Response
+    public function show(Products $product): JsonResponse
     {
-        return $this->render('products/show.html.twig', [
-            'product' => $product,
-        ]);
+//        return  new JsonResponse($product);
+        dd($product);
     }
 }

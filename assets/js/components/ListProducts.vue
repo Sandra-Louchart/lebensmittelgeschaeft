@@ -1,12 +1,31 @@
 <template>
-  <h1>HEllo {{firstName}}</h1>
+<p>{{ product }}</p>
+
+
 </template>
 <script>
-export default {
-  data() {
+const axios = require('axios');
+
+async function test() {
+  return await axios.get('/unseren-products').then(response=> (response.data)).then((response) => {return response})
+}
+ export default {
+     data() {
     return {
-      firstName : 'sandra'
+      product: null,
     };
   },
+   async created () {
+       console.log(await test())
+       this.product = await this.gaga()
+   },
+   methods: {
+      async gaga() {
+        let test1 = await test()
+       return test1
+     }
+   }
+
+
 };
 </script>
