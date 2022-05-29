@@ -17,6 +17,10 @@
                 <td>{{ product.name }}</td>
             </tr>
             <tr>
+                <th>Angebote</th>
+                <td>{{ product.isBest? 'Ja' : 'Nein' }}</td>
+            </tr>
+            <tr>
                 <th>Picture</th>
                 <td>
                     <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="idImage img-thumbnail rounded float-start">

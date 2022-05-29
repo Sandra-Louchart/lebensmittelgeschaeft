@@ -15,6 +15,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Picture</th>
+                    <th>Angebote</th>
                     <th>Subtitle</th>
                     <th>Price</th>
                     <th>Actions</th>
@@ -25,8 +26,9 @@
                     <tr>
                         <td class="text-center">{{ product.name }}</td>
                         <td>
-                            <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="idImage img-thumbnail rounded float-start">
+                            <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="idImage img-thumbnail rounded text-center float-center">
                         </td>
+                        <td>{{ product.isBest ? 'Ja' : 'Nein' }}</td>
                         <td>{{ product.subtitle }}</td>
                         <td>{{ product.price }}</td>
                         <td class="text-center">

@@ -39,16 +39,27 @@ class ProductsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $products = $this->entityManager->getRepository(Products::class)->findWithSearch($search);
         } else {
-            $products = $this->entityManager->getRepository(Products::class)->findAll();
+            $products = $this->entityManager->getRepository(Products::class)->findBy([],['isBest' => 'desc']);
         }
+
+        return $this->render('products/index.html.twig', [
+            'products' => $products,
+            'form' => $form->createView()
+        ]);
+
+    }
+
+    #[Route('/sold', name: 'app_products_sold')]
+    public function sold(ProductsRepository $productsRepository, Request $request): Response
+    {
+        $products = $this->entityManager->getRepository(Products::class)->findByIsBest(1);
 
         $arrayCollection = array();
         foreach($products as $product) {
             $arrayCollection[] =array(
                 'name' => $product->getName(),
                 'price' => $product->getPrice(),
-                'image' => $product->getPictureName()
-
+                'subtitle'=>$product->getSubtitle(),
             );
         }
 
@@ -57,9 +68,10 @@ class ProductsController extends AbstractController
     }
 
     #[Route('/produkt/{id}', name: 'app_product_show', methods: ['GET'])]
-    public function show(Products $product): JsonResponse
+    public function show(Products $product): Response
     {
-//        return  new JsonResponse($product);
-        dd($product);
+        return $this->render('products/show.html.twig', [
+            'product' => $product,
+        ]);
     }
 }
