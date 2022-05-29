@@ -5,7 +5,7 @@
     <div v-for="product in products" class="card text-center col-md-3">
       <div class="card-header">{{product.name}}</div>
       <div class="card-body">
-        <h5 class="card-title">{{product.price}}</h5>
+        <h5 class="card-title">{{product.price}} €</h5>
         <p class="card-text"> {{product.subtitle}}</p>
       </div>
     </div>
