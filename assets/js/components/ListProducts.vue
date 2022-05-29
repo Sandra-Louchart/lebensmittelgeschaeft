@@ -1,30 +1,25 @@
 <template>
-<p>{{ product }}</p>
-
+  <div id="app">
+    <p v-for="product in products">{{product.name}} {{product.price}}</p>
+  </div>
 
 </template>
+
 <script>
 const axios = require('axios');
 
-async function test() {
-  return await axios.get('/unseren-products').then(response=> (response.data)).then((response) => {return response})
-}
+
  export default {
-     data() {
+   data() {
     return {
-      product: null,
+      products: null,
     };
   },
-   async created () {
-       console.log(await test())
-       this.product = await this.gaga()
+   async mounted() {
+     let results = axios.get('/unseren-products').then(response=> (response.data)).then((response) => {this.products = response; return this.products;})
+     this.products = results.data
+     console.log(this.products)
    },
-   methods: {
-      async gaga() {
-        let test1 = await test()
-       return test1
-     }
-   }
 
 
 };
