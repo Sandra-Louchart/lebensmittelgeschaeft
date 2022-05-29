@@ -21,7 +21,7 @@ class SearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Votre recherche ...',
+                    'placeholder' => 'Produkt',
                     'class' => 'form-control-sm'
                 ]
             ])
@@ -33,9 +33,9 @@ class SearchType extends AbstractType
                 'expanded' => true
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Filtrer',
+                'label' => 'Suchen',
                 'attr' => [
-                    'class' => 'btn-block btn-info'
+                    'class' => 'btn-block btn-dark'
                 ]
             ])
         ;

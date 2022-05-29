@@ -18,7 +18,10 @@ class ProductsType extends AbstractType
             ->add('subtitle')
             ->add('description')
             ->add('price')
-            ->add('pictureFile', VichImageType::class)
+            ->add('isBest')
+            ->add('pictureFile', VichImageType::class, [
+                'required' => false
+            ])
             ->add('category', null, [
                 'choice_label'=> 'name'
             ])

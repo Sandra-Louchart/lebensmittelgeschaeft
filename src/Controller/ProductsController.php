@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Class\Search;
 use App\Entity\Products;
 use App\Form\SearchType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,13 +39,31 @@ class ProductsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $products = $this->entityManager->getRepository(Products::class)->findWithSearch($search);
         } else {
-            $products = $this->entityManager->getRepository(Products::class)->findAll();
+            $products = $this->entityManager->getRepository(Products::class)->findBy([],['isBest' => 'desc']);
         }
 
         return $this->render('products/index.html.twig', [
             'products' => $products,
             'form' => $form->createView()
         ]);
+
+    }
+
+    #[Route('/sold', name: 'app_products_sold')]
+    public function sold(ProductsRepository $productsRepository, Request $request): Response
+    {
+        $products = $this->entityManager->getRepository(Products::class)->findByIsBest(1);
+
+        $arrayCollection = array();
+        foreach($products as $product) {
+            $arrayCollection[] =array(
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'subtitle'=>$product->getSubtitle(),
+            );
+        }
+
+        return new JsonResponse($arrayCollection);
 
     }
 
