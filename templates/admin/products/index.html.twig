@@ -9,7 +9,7 @@
     <section class="blockAdmin">
         <h1 class="title text-center mb-5 mt-xxl-5">Admin Produckt</h1>
         <div class="container">
-            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_new') }}">Create new</a>
+            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_new') }}">Schaffen Produkt</a>
             <table class="table table-responsive-lg text-dark">
                 <thead class="thead-light text-center">
                 <tr>
@@ -32,13 +32,13 @@
                         <td>{{ product.subtitle }}</td>
                         <td>{{ product.price }}</td>
                         <td class="text-center">
-                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_show', {'id': product.id}) }}">show</a>
-                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_edit', {'id': product.id}) }}">edit</a>
+                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_show', {'id': product.id}) }}">Sehen</a>
+                            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_edit', {'id': product.id}) }}">Bearbeiten</a>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td class="text-danger" colspan="10">no records found</td>
+                        <td class="text-danger" colspan="10">Keine Produkt gefunden</td>
                     </tr>
                 {% endfor %}
                 </tbody>
