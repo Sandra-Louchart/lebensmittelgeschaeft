@@ -10,11 +10,11 @@
 {% block body %}
     <section class="blockBody">
     <div class="container m-5">
-    <h1 class="mb-5">Meine Bestellungen {{ order.reference }}</h1>
+    <h1 class="mb-5">Meine Bestellungen Nr {{ order.reference }}</h1>
         <p><strong>Bestellung am : </strong> {{ order.createAt |date('d/m/Y') }}</p>
     <p><strong>Bestellnummer : </strong> {{ order.reference }}</p>
         <p><strong>Lieferant : </strong> {{ order.carriername }}</p>
-        <p><strong>Einzelheiten</strong></p>
+        <p><strong>Details</strong></p>
         <table class="table">
             <thead>
             <tr>
@@ -40,8 +40,9 @@
         </table>
         <div class="text-end">
             <strong>Zwischensumme :</strong> {{ (order.getTotal / 100)|number_format(2, ',', '.') }} €<br/>
-            <strong>Lieferpreis :</strong> {{ (order.carrierprice)|number_format(2, ',', '.') }} €<br/>
-            <strong>Summe : </strong> {{ (order.carrierPrice + (order.getTotal / 100))|number_format(2, ',', '.') }} €
+            <strong>Versandkosten :</strong> {{ (order.carrierprice)|number_format(2, ',', '.') }} €<br/>
+            <hr>
+            <strong>Gesamtsumme : </strong> {{ (order.carrierPrice + (order.getTotal / 100))|number_format(2, ',', '.') }} €
         </div>
 
     </div>

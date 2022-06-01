@@ -11,7 +11,7 @@ class CategoryFixtures extends Fixture
 
     private const CATEGORIES = [
         'Obst',
-        'Gemuse',
+        'Gemüse',
     ];
 
     public function load(ObjectManager $manager): void

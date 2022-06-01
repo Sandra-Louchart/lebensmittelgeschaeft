@@ -135,3 +135,24 @@
     }
   }
 }
+
+.title-action{
+  font-family: $font-text;
+  font-weight: 200;
+  letter-spacing: 2px;
+  font-size: 90px;
+  margin-top: $spacing;
+  margin-bottom: $spacing;
+  color: $idontknow;
+  text-align: center;
+}
+.title-uns{
+  font-family: $font-text;
+  font-weight: 200;
+  letter-spacing: 2px;
+  font-size: $font-size-h1;
+  margin-top: $spacing-5;
+  margin-bottom: $spacing-4;
+  color: $idontknow;
+  text-align: center;
+}

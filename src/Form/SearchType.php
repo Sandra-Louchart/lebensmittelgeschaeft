@@ -21,7 +21,7 @@ class SearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Produkt',
+                    'placeholder' => 'Produkte',
                     'class' => 'form-control-sm'
                 ]
             ])

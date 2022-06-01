@@ -24,12 +24,15 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('register', './assets/js/register.js')
     .addEntry('products', './assets/js/products.js')
+    .addEntry('uber', './assets/js/uber.js')
 
     .addEntry('home', './assets/styles/home.scss')
     .addEntry('admin', './assets/styles/admin.scss')
     .addEntry('product', './assets/styles/products.scss')
     .addEntry('account', './assets/styles/account.scss')
     .addEntry('order', './assets/styles/order.scss')
+    .addEntry('uber_uns', './assets/styles/uberUns.scss')
+
 
 
 

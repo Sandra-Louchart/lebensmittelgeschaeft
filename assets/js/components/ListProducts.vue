@@ -1,16 +1,23 @@
 <template>
-  <div id="app" class="m-5 text-center">
-    <h2 class="text-primary text-bg-dark">Unsere Aktionen</h2>
-    <div class="row">
-    <div v-for="product in products" class="card text-center col-md-3">
-      <div class="card-header">{{product.name}}</div>
-      <div class="card-body">
-        <h5 class="card-title">{{product.price}} €</h5>
-        <p class="card-text"> {{product.subtitle}}</p>
+  <section id="app" class="pt-5-pb-5 mb-5 mb-5">
+    <div  class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div v-for="product in products" :key="product.id" class="account-item col-md-6 pt-5 pb-2">
+              <div class=" text-center text-xxl-center">
+                <div class="card-header bg-secondary text-dark">{{product.name}}</div>
+                <div class="card-body bg-primary text-dark">
+                  <h5 class="card-title">{{product.price}} €</h5>
+                  <p class="card-text"> {{product.subtitle}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-  </div>
+  </section>
 
 </template>
 
@@ -30,6 +37,13 @@ const axios = require('axios');
      console.log(this.products)
    },
 
-
 };
 </script>
+
+<style>
+account-item{
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+}
+</style>

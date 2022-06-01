@@ -7,7 +7,7 @@
 
 {% block body %}
 <section class="blockAdmin">
-    <h1 class="title text-center mb-5 mt-xxl-5">Carrier</h1>
+    <h1 class="title text-center mb-5 mt-xxl-5">Lieferservice</h1>
     <div class="container">
     <table class="table table-responsive-lg text-dark">
         <tbody>
@@ -16,21 +16,21 @@
                 <td>{{ carrier.name }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Beschreibung</th>
                 <td>{{ carrier.description }}</td>
             </tr>
             <tr>
-                <th>Price</th>
+                <th>Preis</th>
                 <td>{{ carrier.price }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_index') }}">back to list</a>
+    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_index') }}">Zurück zur Liste</a>
 
-    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_edit', {'id': carrier.id}) }}">edit</a>
+    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_edit', {'id': carrier.id}) }}">Bestätigen</a>
 
-    {{ include('carrier/_delete_form.html.twig') }}
+    {{ include('admin/carrier/_delete_form.html.twig') }}
     </div>
 </section>
 {% endblock %}

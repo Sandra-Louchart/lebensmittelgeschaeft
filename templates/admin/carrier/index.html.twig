@@ -6,16 +6,16 @@
 
 {% block body %}
 <section class="blockAdmin">
-    <h1 class="title text-center mb-5 mt-xxl-5">Admin Carrier</h1>
+    <h1 class="title text-center mb-5 mt-xxl-5">Admin Lieferservice</h1>
     <div class="container">
-        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_new') }}">Create new</a>
+        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_new') }}">Lieferservice anlegen</a>
         <table class="table table-responsive-lg text-dark">
             <thead class="thead-light text-center">
             <tr>
                 <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th>Beschreibung</th>
+                <th>Preis</th>
+                <th>Aktion</th>
             </tr>
             </thead>
             <tbody>
@@ -25,13 +25,13 @@
                     <td>{{ carrier.description }}</td>
                     <td>{{ carrier.price }}</td>
                     <td class="text-center">
-                        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_show', {'id': carrier.id}) }}">show</a>
-                        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_edit', {'id': carrier.id}) }}">edit</a>
+                        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_show', {'id': carrier.id}) }}">Anzeigen</a>
+                        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_carrier_admin_edit', {'id': carrier.id}) }}">Bestätigen</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td class="text-danger" colspan="5">no records found</td>
+                <td class="text-danger" colspan="5">Keine Lieferservice gefunden</td>
             </tr>
         {% endfor %}
         </tbody>

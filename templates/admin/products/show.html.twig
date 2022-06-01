@@ -7,13 +7,12 @@
 
 {% block body %}
 <section class="blockAdmin">
-    <h1 class="title text-center mb-5 mt-xxl-5">Products</h1>
+    <h1 class="title text-center mb-5 mt-xxl-5">Produkt</h1>
     <div class="container">
-
-    <table class="table table-responsive-lg text-dark">
-        <tbody >
+        <table class="table table-responsive-lg text-dark">
+            <tbody >
             <tr>
-                <th>Name</th>
+                <th>Produkt</th>
                 <td>{{ product.name }}</td>
             </tr>
             <tr>
@@ -21,34 +20,35 @@
                 <td>{{ product.isBest? 'Ja' : 'Nein' }}</td>
             </tr>
             <tr>
-                <th>Picture</th>
+                <th>Bild</th>
                 <td>
                     <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="idImage img-thumbnail rounded float-start">
                 </td>
             </tr>
             <tr>
-                <th>Subtitle</th>
+                <th>Einheit</th>
                 <td>{{ product.subtitle }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Bezeichnung</th>
                 <td>{{ product.description }}</td>
             </tr>
             <tr>
-                <th>Price</th>
+                <th>Preis</th>
                 <td>{{ product.price }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
+                <th>Erstellt am</th>
                 <td>{{ product.updatedAt ? product.updatedAt|date('d-m-Y') : '' }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_index') }}">back to list</a>
+        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_index') }}">Zurück zur Liste</a>
+        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_edit', {'id': product.id}) }}">Bearbeiten</a>
 
-    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_products_edit', {'id': product.id}) }}">edit</a>
+        {{ include('admin/products/_delete_form.html.twig') }}
 
-    {{ include('admin/products/_delete_form.html.twig') }}
+    </div>
 </section>
 {% endblock %}

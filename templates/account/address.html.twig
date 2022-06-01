@@ -10,9 +10,10 @@
 {% block body %}
 <section class="blockBody">
     <div class="container m-5">
-        <h1 class="mb-5">Meine Adress</h1>
+        <h1 class="mb-5">Meine Adresse</h1>
         {% if app.user.addresses | length ==0 %}
-            <p>Vous n'avez pas d'adresse</p>
+            <p>Keine Adresse</p>
+            <a href="{{ path('app_account_add_address') }}">Füge eine Adresse hinzu</a>
         {% else %}
             <div class="row">
                 {% for address in app.user.addresses %}
@@ -25,19 +26,15 @@
                                     {{ address.postal }} - {{ address.city }} <br/>
                                     {{ address.country }}
                                 </p>
-                                <a href="{{ path('app_account_edit_address', { 'id' : address.id }) }}">Modifier</a> |
-                                <a href="{{ path('app_account_delete_address', { 'id' : address.id }) }}">Supprimer</a>
+                                <a href="{{ path('app_account_edit_address', { 'id' : address.id }) }}"   >Bearbeiten</a> |
+                                <a href="{{ path('app_account_delete_address', { 'id' : address.id }) }} " onclick="return confirm('Möchten Sie dieses Element wirklich löschen?')">Löschen</a>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
-
-
         {% endif %}
-
     </div>
-
 </section>
 
 {% endblock %}

@@ -18,55 +18,39 @@ class AddressType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Welchen Namen möchten Sie dieser Adresse geben?',
-                'attr' => [
-                    'placeholder' => 'Nennen Sie Ihre Adresse'
-                ]
+
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Ihr Vorname',
-                'attr' => [
-                    'placeholder' => 'Geben Sie Ihren Vornamen ein'
-                ]
+
             ])
             ->add('lastname', TextType::class, [
                 'label' => 'Ihr Nachname',
-                'attr' => [
-                    'placeholder' => 'Geben Sie Ihren Nachnamen ein'
-                ]
             ])
             ->add('company', TextType::class, [
-                'label' => 'Ihr Firma',
+                'label' => 'Ihre Firma',
                 'required' => false,
                 'attr' => [
-                    'placeholder' => '(Optional) Geben Sie Ihren Firmennamen ein'
+                    'placeholder' => '(Optional)'
                 ]
             ])
             ->add('address', TextType::class, [
-                'label' => 'Ihr Adresse',
-                'attr' => [
-                    'placeholder' => 'Geben Sie Ihren Adressen ein'
-                ]
+                'label' => 'Ihre Adresse',
             ])
             ->add('postal', TextType::class, [
                 'label' => 'Ihre Postleitzahl',
-                'attr' => [
-                    'placeholder' => 'Geben Sie Ihre Postleitzahl ein'
-                ]
+
             ])
             ->add('city', TextType::class, [
-                'label' => 'Ihr Stadt',
-                'attr' => [
-                    'placeholder' => 'Geben Sie Ihre Stadt ein '
-                ]
+                'label' => 'Ihre Stadt',
+
             ])
             ->add('country', CountryType::class, [
-                'label' => 'Ihre Land',
+                'label' => 'Ihr Land',
             ])
             ->add('phone', TelType::class, [
-                'label' => 'Ihr Telefonnummer',
-                'attr' => [
-                    'placeholder' => 'Trage Ihre Telefonnummer ein'
-                ]
+                'label' => 'Ihre Telefonnummer',
+
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Bestätigen',

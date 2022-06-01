@@ -22,10 +22,12 @@ class RegisterController extends AbstractController
     #[Route('/anmeldung', name: 'register')]
     public function index( Request $request, UserPasswordHasherInterface $passwordHasher ): Response
     {
+        $notification = null;
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted()&& $form->isValid()) {
 
             $user = $form ->getData();
@@ -39,10 +41,12 @@ class RegisterController extends AbstractController
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
-
+            $notification= 'Ihre Registrierung war erfolgreich. Sie können sich jetzt bei Ihrem Konto anmelden';
         }
+
         return $this->render('register/index.html.twig', [
-            'form'=> $form->createView()
+            'form'=> $form->createView(),
+            'notification' => $notification,
         ]);
     }
 }

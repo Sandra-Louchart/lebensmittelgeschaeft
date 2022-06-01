@@ -33,9 +33,9 @@ class OrderType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Bestätigen Sie Ihre Bestellung',
+                'label' => 'weiter zur Kasse',
                 'attr' => [
-                    'class' => 'btn btn-secondary btn-block'
+                    'class' => 'btn btn-secondary btn-block btn-end'
                 ]
             ])
         ;

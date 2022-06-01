@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('uber_uns') }}
+
+{% endblock %}
+
+{% block title %}Hello UberUnsController!{% endblock %}
+
+{% block body %}
+    <section class="blockBody">
+{#        <div class="slider">#}
+{#            <div class="cont-slides">#}
+{#                <img src="images/bg_1.jpg" class="active">#}
+{#                <img src="images/bg_2.jpg" >#}
+{#                <img src="images/bg_3.jpg" >#}
+{#            </div>#}
+{#            <div class="commandes">#}
+{#                <button class="left">#}
+{#                    <img src="images/Links.png">#}
+{#                </button>#}
+{#                <button class="right">#}
+{#                    <img src="images/recht.png">#}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center">
+                        <div class="slider">
+                            <div class="cont-slides">
+                                <img src="images/bg_1.jpg" class="active">
+                                <img src="images/bg_2.jpg" >
+                                <img src="images/bg_3.jpg" >
+                            </div>
+                            <div class="commandes">
+                                <button class="left">
+                                    <img src="images/Links.png">
+                                </button>
+                                <button class="right">
+                                    <img src="images/recht.png">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
+                        <div class="heading-section-bold mb-4 mt-md-5">
+                            <div class="ml-md-0">
+                                <h2 class="mb-4">Willkommen auf unserer neuen bioladen-Website</h2>
+                            </div>
+                        </div>
+                        <div class="pb-md-5">
+                            <p>Heutzutage möchte jeder in der Lage sein, qualitativ hochwertige und frische Produkte
+                                zu essen. Aber wie nach einem Arbeitstag zu tun. Aus diesem Grund haben wir unseren
+                                Online-Bioladen erstellt, der es Ihnen ermöglicht, innerhalb von 48 Stunden
+                                ( Montag bis Samstag) frische und regionale Produkte zu liefern.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('uber') }}
+{% endblock %}
