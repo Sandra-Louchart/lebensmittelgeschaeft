@@ -9,15 +9,15 @@
 
 <h1 class="title text-center mb-5 mt-xxl-5">Admin Order</h1>
     <div class="container">
-        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_new') }}">Create new</a>
+{#        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_new') }}">Schaffen Bestellung </a>#}
         <table class="table table-responsive-lg text-dark">
             <thead class="thead-light text-center">
             <tr>
-                <th>Carrier Name</th>
-                <th>Carrier Price</th>
-                <th>Delivery</th>
-                <th>CreateAt</th>
-                <th>IsPaid</th>
+                <th>Liefer Name</th>
+                <th>Liefer Price</th>
+                <th>Adresse</th>
+                <th>Create</th>
+                <th>Paid</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -31,13 +31,13 @@
                 <td>{{ order.createAt ? order.createAt|date('d-m-Y') : '' }}</td>
                 <td>{{ order.isPaid ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_show', {'id': order.id}) }}">show</a>
+                    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_show', {'id': order.id}) }}">Sehen</a>
 {#                    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_edit', {'id': order.id}) }}">edit</a>#}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td class="text-danger" colspan="7">no records found</td>
+                <td class="text-danger" colspan="7">Keine Bestellung gefunden</td>
             </tr>
         {% endfor %}
         </tbody>
