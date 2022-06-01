@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Carrier;
+use Doctrine\DBAL\Types\FloatType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,9 +15,15 @@ class CarrierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('price')
+            ->add('name', TextType::class, [
+                'label' => 'Liefername',
+            ])
+            ->add('description', TextType::class,[
+                'label' => 'Beschreibung',
+            ])
+            ->add('price', NumberType::class, [
+                'label' => 'Preis',
+            ])
         ;
     }
 

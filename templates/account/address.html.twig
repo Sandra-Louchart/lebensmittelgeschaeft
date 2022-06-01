@@ -26,8 +26,8 @@
                                     {{ address.postal }} - {{ address.city }} <br/>
                                     {{ address.country }}
                                 </p>
-                                <a href="{{ path('app_account_edit_address', { 'id' : address.id }) }}">Bearbeiten</a> |
-                                <a href="{{ path('app_account_delete_address', { 'id' : address.id }) }}">Löschen</a>
+                                <a href="{{ path('app_account_edit_address', { 'id' : address.id }) }}"   >Bearbeiten</a> |
+                                <a href="{{ path('app_account_delete_address', { 'id' : address.id }) }} " onclick="return confirm('Möchten Sie dieses Element wirklich löschen?')">Löschen</a>
                             </div>
                         </div>
                     </div>

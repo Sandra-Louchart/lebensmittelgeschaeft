@@ -7,7 +7,7 @@
 {% block body %}
 <section class="blockAdmin">
 
-<h1 class="title text-center mb-5 mt-xxl-5">Admin Order</h1>
+<h1 class="title text-center mb-5 mt-xxl-5">Admin Bestellung</h1>
     <div class="container">
 {#        <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_new') }}">Schaffen Bestellung </a>#}
         <table class="table table-responsive-lg text-dark">
@@ -16,9 +16,9 @@
                 <th>Liefer Name</th>
                 <th>Liefer Price</th>
                 <th>Adresse</th>
-                <th>Create</th>
-                <th>Paid</th>
-                <th>Actions</th>
+                <th>Erstellt die</th>
+                <th>Zahlen die</th>
+                <th>Aktion</th>
             </tr>
         </thead>
         <tbody>
@@ -29,9 +29,9 @@
                 <td>{{ order.delivery|raw }}</td>
 
                 <td>{{ order.createAt ? order.createAt|date('d-m-Y') : '' }}</td>
-                <td>{{ order.isPaid ? 'Yes' : 'No' }}</td>
+                <td>{{ order.isPaid ? 'Ja' : 'Nein' }}</td>
                 <td>
-                    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_show', {'id': order.id}) }}">Sehen</a>
+                    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_show', {'id': order.id}) }}">Anzeigen</a>
 {#                    <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_order_edit', {'id': order.id}) }}">edit</a>#}
                 </td>
             </tr>

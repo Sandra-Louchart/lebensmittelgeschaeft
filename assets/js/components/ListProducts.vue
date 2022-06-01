@@ -4,8 +4,8 @@
       <div class="row">
         <div class="col-12">
           <div class="row">
-            <div v-for="product in products" :key="product.id" class="col-md-6 pt-5 pb-2">
-              <div class="account-item text-center text-xxl-center">
+            <div v-for="product in products" :key="product.id" class="account-item col-md-6 pt-5 pb-2">
+              <div class=" text-center text-xxl-center">
                 <div class="card-header bg-secondary text-dark">{{product.name}}</div>
                 <div class="card-body bg-primary text-dark">
                   <h5 class="card-title">{{product.price}} €</h5>
@@ -39,3 +39,11 @@ const axios = require('axios');
 
 };
 </script>
+
+<style>
+account-item{
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+}
+</style>

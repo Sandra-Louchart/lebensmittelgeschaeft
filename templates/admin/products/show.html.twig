@@ -20,25 +20,25 @@
                 <td>{{ product.isBest? 'Ja' : 'Nein' }}</td>
             </tr>
             <tr>
-                <th>Picture</th>
+                <th>Bild</th>
                 <td>
                     <img src="/images/products/{{ product.pictureName }}" alt="{{ product.name }}" class="idImage img-thumbnail rounded float-start">
                 </td>
             </tr>
             <tr>
-                <th>Subtitle</th>
+                <th>Einheit</th>
                 <td>{{ product.subtitle }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Bezeichnung</th>
                 <td>{{ product.description }}</td>
             </tr>
             <tr>
-                <th>Price</th>
+                <th>Preis</th>
                 <td>{{ product.price }}</td>
             </tr>
             <tr>
-                <th>Updated</th>
+                <th>Erstellt am</th>
                 <td>{{ product.updatedAt ? product.updatedAt|date('d-m-Y') : '' }}</td>
             </tr>
             </tbody>
