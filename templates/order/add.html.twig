@@ -7,7 +7,6 @@
 {% endblock %}
 {% block javascript %}
 <script src="https://js.stripe.com/v3/"></script>
-// <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
 {% endblock %}
 
 
@@ -54,14 +53,17 @@
                     </div>
                 {% set total = total + (product.product.price * product.quantity) %}
                 {% endfor %}
-            </div>
+                    <hr>
+                    <strong>Zwischensumme : </strong> {{ (total)|number_format(2, ',', '.') }} €<br/>
+                    <strong>Versandkosten : </strong> {{ (carrier.price)|number_format(2, ',', '.') }} €
+                    <hr>
+                    <strong>Gesamtsumme : </strong> {{ ((total) + (carrier.price))|number_format(2, ',', '.') }} €
+                    <a href="{{ path('app_stripe_create_session', {'reference': reference}) }}" class="btn btn-dark btn-block m-5" id="checkout-button">
+                        Zahlen | {{ ((total) + (carrier.price))|number_format(2, ',', '.') }} €</a>
+                </div>
 
-            <hr>
-            <strong>Zwischensumme : </strong> {{ (total)|number_format(2, ',', '.') }} €<br/>
-            <strong>Lieferung : </strong> {{ (carrier.price)|number_format(2, ',', '.') }} €
-            <hr>
-            <strong>Summe : </strong> {{ ((total) + (carrier.price))|number_format(2, ',', '.') }} €
-                <a href="{{ path('app_stripe_create_session', {'reference': reference}) }}" class="btn btn-dark btn-block m-5" id="checkout-button">Zahlen | {{ ((total) + (carrier.price))|number_format(2, ',', '.') }} €</a>
+
+
             </div>
 
         </div>

@@ -13,6 +13,7 @@
         <h1 class="mb-5">Meine Adresse</h1>
         {% if app.user.addresses | length ==0 %}
             <p>Keine Adresse</p>
+            <a href="{{ path('app_account_add_address') }}">Füge eine Adresse hinzu</a>
         {% else %}
             <div class="row">
                 {% for address in app.user.addresses %}
@@ -25,19 +26,15 @@
                                     {{ address.postal }} - {{ address.city }} <br/>
                                     {{ address.country }}
                                 </p>
-                                <a href="{{ path('app_account_edit_address', { 'id' : address.id }) }}">Modifier</a> |
-                                <a href="{{ path('app_account_delete_address', { 'id' : address.id }) }}">Supprimer</a>
+                                <a href="{{ path('app_account_edit_address', { 'id' : address.id }) }}">Bearbeiten</a> |
+                                <a href="{{ path('app_account_delete_address', { 'id' : address.id }) }}">Löschen</a>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
-
-
         {% endif %}
-
     </div>
-
 </section>
 
 {% endblock %}

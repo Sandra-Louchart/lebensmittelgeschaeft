@@ -5,8 +5,10 @@
 }
 
 .account-item{
-  background-color: $primary;
   padding:$spacing-4;
+  border:solid;
+  border-color : $primary;
+  border-radius : 10px;
 
   a{
     text-transform: uppercase;
@@ -22,6 +24,6 @@
 }
 .icon-item{
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  //width: 100%;
+  //height: 100%;
 }

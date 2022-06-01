@@ -15,7 +15,7 @@
             <p>
                 Hallo <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong>,<br/><br/>
                 Anscheinend ist Ihre Zahlung für Ihre Bestellung Nr.<strong>{{ order.reference }}</strong>.<br/>
-                Eine Fehlerbestätigung wurde Ihnen soeben per E-Mail an  <strong>{{ order.user.email }}</strong> gesendet.
+                Wir haben eine Fehlerbestätigung an Ihre E-Mail  <strong>{{ order.user.email }}</strong> gesendet.
             </p>
             <hr>
              <a href="{{ path('app_order') }}" class="btn btn-dark">Zahlung erneut versuchen</a>
