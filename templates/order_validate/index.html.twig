@@ -15,12 +15,12 @@
     <p>
         Hallo <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong>,<br/><br/>
         Vielen Dank für Ihre Bestellung Nr.<strong>{{ order.reference }}</strong>.<br/>
-        Eine Bestätigung wurde Ihnen soeben per E-Mail an  <strong>{{ order.user.email }}</strong> gesendet.
+        Wir haben eine Bestätigung an Ihre E-Mail  <strong>{{ order.user.email }}</strong> gesendet.
     <hr>
     Ihre Bestellung wird von <strong>{{ order.carrierName }}</strong>  an folgende Adresse geliefert: <br/>
     {{ order.delivery|raw }}
     <hr>
-    Um Ihre Bestellung zu verfolgen, gehen Sie zu Ihrem <a href="{{ path('app_account_order') }}">Konto</a>.
+    Um Ihre Bestellung zu verfolgen, gehen Sie zu <a href="{{ path('app_account_order') }}"> Mein Konto</a>.
     </p>
     </div>
 </section>

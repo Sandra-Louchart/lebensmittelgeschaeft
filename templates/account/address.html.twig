@@ -10,9 +10,9 @@
 {% block body %}
 <section class="blockBody">
     <div class="container m-5">
-        <h1 class="mb-5">Meine Adress</h1>
+        <h1 class="mb-5">Meine Adresse</h1>
         {% if app.user.addresses | length ==0 %}
-            <p>Vous n'avez pas d'adresse</p>
+            <p>Keine Adresse</p>
         {% else %}
             <div class="row">
                 {% for address in app.user.addresses %}

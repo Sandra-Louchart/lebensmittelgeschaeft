@@ -25,9 +25,6 @@ class RegisterType extends AbstractType
                         'min' => 3,
                         'max' => 50,
                         ])
-                ],
-                'attr' => [
-                    'placeholder' => 'Schreiben Sie Ihren Vorname'
                 ]
             ])
             ->add('lastname', TextType::class, [
@@ -37,10 +34,8 @@ class RegisterType extends AbstractType
                         'min' => 3,
                         'max' => 50,
                     ])
-                ],
-                'attr' => [
-                    'placeholder' => 'Schreiben Sie Ihren Nachname'
                 ]
+
             ])
             ->add('email', EmailType::class, [
                 'label' => 'E-Mail',
@@ -49,9 +44,6 @@ class RegisterType extends AbstractType
                         'min' => 3,
                         'max' => 100,
                     ])
-                ],
-                'attr' => [
-                    'placeholder' => 'Schreiben Sie IhrenEmail Adresse'
                 ]
             ])
             ->add('password', RepeatedType::class, [
@@ -61,14 +53,10 @@ class RegisterType extends AbstractType
                 'required' => true,
                 'first_options' => [
                     'label'=> ' Passwort',
-                    'attr' => [
-                        'placeholder' => 'Schreiben Sie Ihr Passwort'
-                    ]],
+                    ],
                 'second_options' => [
                     'label' => 'Bestätigen Sie Ihr Passwort',
-                    'attr' => [
-                        'placeholder' => 'Schreiben Sie Ihre Passwortbestätigung',
-                    ]],
+                   ],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Bestätigen'

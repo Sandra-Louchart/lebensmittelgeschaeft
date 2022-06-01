@@ -24,7 +24,7 @@
                      {% endif %}
                     <label class="pt-4 px-1" for="inputEmail">E-mail</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control px-1 justify-content-center" autocomplete="email" required autofocus>
-                    <label class="pt-4 px-1 mt-3" for="inputPassword">Password</label>
+                    <label class="pt-4 px-1 mt-3" for="inputPassword">Passwort</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
                     <input class="px-1" type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <button class="btn btn m-4 btn-primary" type="submit">Login</button>

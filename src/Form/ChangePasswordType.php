@@ -33,26 +33,18 @@ class ChangePasswordType extends AbstractType
             ->add('old_password', PasswordType::class, [
                 'label' => 'Mein aktuelles Passwort',
                 'mapped'=> false,
-                'attr' => [
-                    'placeholder'=> 'Bitte geben Sie Ihr aktuelles Passwort ein'
-                ]
             ])
             ->add('new_password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'invalid_message' => 'Passwort und Bestätigung müssen identisch sein',
-                'label' => 'Mein neu Passwort',
                 'required' => true,
                 'first_options' => [
-                    'label'=> ' Passwort',
-                    'attr' => [
-                        'placeholder' => 'Schreiben Sie Ihr Passwort'
-                    ]],
+                    'label'=> ' Mein neues Passwort',
+            ],
                 'second_options' => [
-                    'label' => 'Bestätigen Sie Ihr neu Passwort',
-                    'attr' => [
-                        'placeholder' => 'Schreiben Sie Ihre neu Passwortbestätigung',
-                    ]],
+                    'label' => 'Neues Passwort bestätigen ',
+              ],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Aktualisieren'
