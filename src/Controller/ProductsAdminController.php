@@ -75,4 +75,5 @@ class ProductsAdminController extends AbstractController
 
         return $this->redirectToRoute('app_products_index', [], Response::HTTP_SEE_OTHER);
     }
+    // TODO Verwaltung der Produktmenge auf Lager
 }

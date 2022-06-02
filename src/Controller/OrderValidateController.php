@@ -36,12 +36,12 @@ class OrderValidateController extends AbstractController
             $order->setIsPaid(1);
             $this->entityManager->flush();
 
-//            $email = (new Email())
-//                ->from('hello@example.com')
-//                ->to('you@example.com')
-//                ->subject('Time for Symfony Mailer!')
-//                ->html('<p>See Twig integration for better HTML integration!</p>');
-//            $mailer->send($email);
+            $email = (new Email())
+                ->from('hello@example.com')
+                ->to('you@example.com')
+                ->subject('Danke für Ihren Einkauf!')
+                ->html('<p>Vielen Dank für Ihren Einkauf. Sie können Ihre Bestellung direkt in Ihrem Konto verfolgen</p>');
+            $mailer->send($email);
 
 
         }
