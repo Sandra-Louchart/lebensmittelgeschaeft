@@ -29,21 +29,28 @@ class AccountAddressController extends AbstractController
     #[Route('/konto/neu-address', name: 'app_account_add_address')]
     public function add(Request $request, Cart $cart): Response
     {
+
+        // creation of an address and init form
+
         $address = new Address();
         $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
+
+        /* If the customer is correctly connected to his account and the form is valid, the address is injected into
+        the database, otherwise he is redirected to the page to the my addresses page.
+        */
+
         if($form->isSubmitted() && $form->isValid()) {
             $address->setUser($this->getUser());
             $this->entityManager->persist($address);
             $this->entityManager->flush();
+
             if($cart ->get()) {
                 return $this->redirectToRoute('app_order');
 
             } else {
                 return $this->redirectToRoute('app_account_address');
-
             }
-
         }
 
         return $this->render('account/address_add.html.twig', [
@@ -54,6 +61,8 @@ class AccountAddressController extends AbstractController
     #[Route('/konto/edit_address/{id}', name: 'app_account_edit_address')]
     public function edit(Request $request, $id)
     {
+        // Search an address according to the id and according to the user.
+
         $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
 
         if (!$address || $address->getUser() != $this->getUser()) {
@@ -61,8 +70,10 @@ class AccountAddressController extends AbstractController
         }
 
         $form = $this->createForm(AddressType::class, $address);
-
         $form->handleRequest($request);
+
+
+        // If both are valid then we modify the address
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->flush();
@@ -77,6 +88,9 @@ class AccountAddressController extends AbstractController
     #[Route('/konto/delete_address/{id}', name: 'app_account_delete_address')]
     public function delete($id)
     {
+        /*Search an address according to the id and according to the user.
+        If both are valid then we delete the address. */
+
         $address = $this->entityManager->getRepository(Address::class)->findOneById($id);
 
         if ($address && $address->getUser() == $this->getUser()) {

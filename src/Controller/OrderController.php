@@ -25,6 +25,9 @@ class OrderController extends AbstractController
     #[Route('/order', name: 'app_order')]
     public function index(Cart $cart, Request $request): Response
     {
+
+        /*Allows you to retrieve the addresses of the connected customers, the different possible deliverers and the customer's basket*/
+
         if (!$this->getUser()->getAddresses()->getValues())
         {
             return $this->redirectToRoute('app_account_add_address');
@@ -42,6 +45,10 @@ class OrderController extends AbstractController
     #[Route('/order/recapitulatif', name: 'app_order_recap', methods: ['POST'])]
     public function add(Cart $cart, Request $request): Response
     {
+
+        /*Takes into account the address and the delivery person chosen by the customer. As well as the customer's basket with the different prices
+        The link to stripe is here. when we top the payment */
+
         $form =$this->createForm(OrderType::class, null, [
             'user' =>$this->getUser()
         ]);

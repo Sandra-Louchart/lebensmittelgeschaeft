@@ -17,6 +17,8 @@ class OrderCancelController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
+    /*Controller which allows you to manage customers when the stripe payment has not been successful*/
+
     #[Route('/order/cancel/{stripeSessionId}', name: 'app_order_cancel')]
     public function index($stripeSessionId): Response
     {

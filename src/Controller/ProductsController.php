@@ -31,6 +31,10 @@ class ProductsController extends AbstractController
     #[Route('/unseren-products', name: 'app_products')]
     public function index(ProductsRepository $productsRepository, Request $request): Response
     {
+
+        /*We call on the Search class which will allow the customer to make a filter according to the category of the
+        products, but also by writing the product (not necessarily in complete need of a minimum letter)*/
+
         $search = new Search();
         $form = $this->createForm(SearchType::class, $search);
 
@@ -52,6 +56,9 @@ class ProductsController extends AbstractController
     #[Route('/sold', name: 'app_products_sold')]
     public function sold(ProductsRepository $productsRepository, Request $request): Response
     {
+
+        /*Returned in JSon to be displayed using the vue.js component these are the promotions of the moment*/
+
         $products = $this->entityManager->getRepository(Products::class)->findByIsBest(1);
 
         $arrayCollection = array();

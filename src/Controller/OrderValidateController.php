@@ -20,6 +20,7 @@ class OrderValidateController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
+    /*Controller which allows you to manage customers when the stripe payment has been successful*/
 
     #[Route('order/success/{stripeSessionId}', name: 'app_order_validate')]
     public function index($stripeSessionId, Cart $cart, MailerInterface $mailer): Response
@@ -30,6 +31,8 @@ class OrderValidateController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
+        /*If the payment is validated and the customer is identical then we empty their basket and we pass isPaid in positive
+         And we send an email*/
         if(!$order->isIsPaid()) {
 
             $cart ->remove();
