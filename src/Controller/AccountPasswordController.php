@@ -54,4 +54,6 @@ class AccountPasswordController extends AbstractController
             'notification' => $notification,
         ]);
     }
+
+    //TODO Passwort vergessen
 }

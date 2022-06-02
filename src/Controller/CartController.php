@@ -69,3 +69,4 @@ class CartController extends AbstractController
     }
 }
 
+//TODO message to say that the product is in the basket
