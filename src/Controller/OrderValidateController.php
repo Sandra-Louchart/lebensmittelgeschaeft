@@ -20,6 +20,7 @@ class OrderValidateController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
+    /*Controller which allows you to manage customers when the stripe payment has been successful*/
 
     #[Route('order/success/{stripeSessionId}', name: 'app_order_validate')]
     public function index($stripeSessionId, Cart $cart, MailerInterface $mailer): Response
@@ -30,18 +31,20 @@ class OrderValidateController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
+        /*If the payment is validated and the customer is identical then we empty their basket and we pass isPaid in positive
+         And we send an email*/
         if(!$order->isIsPaid()) {
 
             $cart ->remove();
             $order->setIsPaid(1);
             $this->entityManager->flush();
 
-//            $email = (new Email())
-//                ->from('hello@example.com')
-//                ->to('you@example.com')
-//                ->subject('Time for Symfony Mailer!')
-//                ->html('<p>See Twig integration for better HTML integration!</p>');
-//            $mailer->send($email);
+            $email = (new Email())
+                ->from('hello@example.com')
+                ->to('you@example.com')
+                ->subject('Danke für Ihren Einkauf!')
+                ->html('<p>Vielen Dank für Ihren Einkauf. Sie können Ihre Bestellung direkt in Ihrem Konto verfolgen</p>');
+            $mailer->send($email);
 
 
         }

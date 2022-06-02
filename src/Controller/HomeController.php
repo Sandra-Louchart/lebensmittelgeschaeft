@@ -10,11 +10,8 @@ use App\Repository\HomePicturesRepository;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(HomePicturesRepository $homePicturesRepository): Response
+    public function index(): Response
     {
-        $pictures = $homePicturesRepository ->findAll();
-        return $this->render('home/index.html.twig', [
-            'pictures' => $pictures,
-        ]);
+        return $this->render('home/index.html.twig');
     }
 }

@@ -20,6 +20,7 @@ class CartController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
+    //We will look for the functions in the class cart
 
     #[Route('/cart', name: 'app_cart')]
     public function index(Cart $cart)

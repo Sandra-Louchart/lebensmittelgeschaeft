@@ -23,6 +23,9 @@ class AccountPasswordController extends AbstractController
     public function index(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
 
+        /*We will look for the password of the user in the database and compare it to the one he has just entered if it
+        is identical, we take into account the modification of the password.*/
+
         $notification = null;
         $user = $this->getUser();
         $form = $this->createForm(ChangePasswordType::class, $user);

@@ -22,6 +22,8 @@ class RegisterController extends AbstractController
     #[Route('/anmeldung', name: 'register')]
     public function index( Request $request, UserPasswordHasherInterface $passwordHasher ): Response
     {
+
+        /*Check if the user and password hasher in the database are identical in order to allow the client to connect*/
         $notification = null;
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);

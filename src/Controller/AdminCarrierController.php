@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('admin/carrier')]
-class CarrierAdminController extends AbstractController
+class AdminCarrierController extends AbstractController
 {
     #[Route('/', name: 'app_carrier_admin_index', methods: ['GET'])]
     public function index(CarrierRepository $carrierRepository): Response

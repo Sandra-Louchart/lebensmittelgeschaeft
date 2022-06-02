@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('admin/products')]
-class ProductsAdminController extends AbstractController
+class AdminProductsController extends AbstractController
 {
     #[Route('/', name: 'app_products_index', methods: ['GET'])]
     public function index(ProductsRepository $productsRepository): Response
@@ -75,4 +75,5 @@ class ProductsAdminController extends AbstractController
 
         return $this->redirectToRoute('app_products_index', [], Response::HTTP_SEE_OTHER);
     }
+    // TODO Verwaltung der Produktmenge auf Lager
 }
