@@ -58,4 +58,20 @@ class Mail
 
     }
 
+    public function newOrder(
+        string $from = 'bioladen@bo.com',
+        string $to = 'admin@bioladen.com',
+
+    )
+    {
+        $email = (new Email())
+            ->from($from)
+            ->to($to)
+            ->subject('Neue Ordnung')
+            ->text('Sie haben eine neue Bestellung, die Sie in Ihrem Administratorbereich finden können');
+
+        $this->mailer->send($email);
+    }
+
+
 }

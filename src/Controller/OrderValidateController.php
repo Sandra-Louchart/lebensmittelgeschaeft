@@ -41,8 +41,11 @@ class OrderValidateController extends AbstractController
 
             $mail->succesEmail(
                 $order->getUser()->getEmail()
-
                 );
+
+            $mail->newOrder(
+
+            );
 
 
         }
