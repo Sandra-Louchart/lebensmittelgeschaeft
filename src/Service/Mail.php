@@ -30,4 +30,18 @@ class Mail
         $this->mailer->send($email);
     }
 
+    public function succesEmail(
+        string $to,
+    )
+    {
+        $email = (new Email())
+            ->from('Bioladen@bio.com')
+            ->to($to)
+            ->subject('Danke für Ihren Einkauf!')
+            ->text('Vielen Dank für Ihren Einkauf. Sie können Ihre Bestellung direkt in Ihrem Konto verfolgen');
+
+        $this->mailer->send($email);
+
+    }
+
 }
