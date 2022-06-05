@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Service\Mail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,19 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request, MailerInterface $mailer): Response
+    public function index(Request $request, Mail $mail): Response
     {
-        $form = $this->createForm(ContactType::class);
+
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
         $notification = null;
 
         if($form->isSubmitted() && $form->isValid()) {
-            $email = (new Email())
-                ->from('hello@example.com')
-                ->to('you@example.com')
-                ->subject('Time for Symfony Mailer!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
-            $mailer->send($email);
+            $mail->sendEmail(
+                $contact->getEmail(),
+                $contact->getSubject(),
+                $contact->getMessage(),
+            );
+
             $notification= 'Wir werden Ihre E-Mail so schnell wie möglich beantworten';
 
         }

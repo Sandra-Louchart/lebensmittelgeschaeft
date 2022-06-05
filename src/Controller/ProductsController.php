@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Class\Search;
+use App\Service\Search;
 use App\Entity\Products;
 use App\Form\SearchType;
 use Symfony\Component\HttpFoundation\JsonResponse;

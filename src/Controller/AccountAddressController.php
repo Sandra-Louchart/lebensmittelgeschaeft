@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Class\Cart;
 use App\Entity\Address;
 use App\Form\AddressType;
+use App\Service\Cart;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
