@@ -44,4 +44,18 @@ class Mail
 
     }
 
+    public function cancelEmail(
+        string $to,
+    )
+    {
+        $email = (new Email())
+            ->from('Bioladen@bio.com')
+            ->to($to)
+            ->subject('Fehlerbestätigung')
+            ->text('Ihre Bestellung konnte nicht validiert werden');
+
+        $this->mailer->send($email);
+
+    }
+
 }
