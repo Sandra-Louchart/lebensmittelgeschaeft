@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Class\Cart;
 use App\Entity\Order;
+use App\Service\Cart;
+use App\Service\Mail;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+
 use Symfony\Component\Routing\Annotation\Route;
 
 class OrderValidateController extends AbstractController
@@ -23,7 +23,7 @@ class OrderValidateController extends AbstractController
     /*Controller which allows you to manage customers when the stripe payment has been successful*/
 
     #[Route('order/success/{stripeSessionId}', name: 'app_order_validate')]
-    public function index($stripeSessionId, Cart $cart, MailerInterface $mailer): Response
+    public function index($stripeSessionId, Cart $cart, Mail $mail): Response
     {
         $order = $this->entityManager->getRepository(Order::class)->findOneByStripeSessionId($stripeSessionId);
 
@@ -39,13 +39,11 @@ class OrderValidateController extends AbstractController
             $order->setIsPaid(1);
             $this->entityManager->flush();
 
-            $email = (new Email())
-                ->from('hello@example.com')
-                ->to('you@example.com')
-                ->subject('Danke für Ihren Einkauf!')
-                ->html('<p>Vielen Dank für Ihren Einkauf. Sie können Ihre Bestellung direkt in Ihrem Konto verfolgen</p>');
-            $mailer->send($email);
+            $mail->succesEmail(
+                $order->getUser()->getEmail()
+                );
 
+            $mail->newOrder();
 
         }
         return $this->render('order_validate/index.html.twig', [
