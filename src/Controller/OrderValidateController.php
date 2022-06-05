@@ -43,10 +43,7 @@ class OrderValidateController extends AbstractController
                 $order->getUser()->getEmail()
                 );
 
-            $mail->newOrder(
-
-            );
-
+            $mail->newOrder();
 
         }
         return $this->render('order_validate/index.html.twig', [
