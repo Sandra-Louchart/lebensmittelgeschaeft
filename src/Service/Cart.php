@@ -109,4 +109,10 @@ class Cart
 
         return $cartComplete;
     }
+
+    public function getAction()
+    {
+//        $totalAction = 0;
+//        $product_action = $th
+    }
 }
