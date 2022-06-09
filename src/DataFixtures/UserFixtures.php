@@ -26,7 +26,6 @@ class UserFixtures extends Fixture
 
     {
 
-        // Création d’un utilisateur de type “contributeur” (= auteur)
 
         $user = new User();
         $user->setEmail('john.doe@gmail.com');
@@ -48,8 +47,6 @@ class UserFixtures extends Fixture
         $manager->persist($user);
 
 
-        // Création d’un utilisateur de type “administrateur”
-
         $admin = new User();
 
         $admin->setEmail('admin@monsite.com');
@@ -70,7 +67,6 @@ class UserFixtures extends Fixture
         $manager->persist($admin);
 
 
-        // Sauvegarde des 2 nouveaux utilisateurs :
 
         $manager->flush();
 
