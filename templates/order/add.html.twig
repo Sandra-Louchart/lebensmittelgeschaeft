@@ -41,17 +41,24 @@
                 </div>
                 <div class="order-summary">
                     {% set total = null %}
+                    {% set totalAction =null %}
                 {% for key,product in cart %}
                     <div class="col row">
-                        <div class="col-6">
+                        <div class="col-4">
                             {{ product.product.name }}  x {{ product.quantity }}
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             {{ ((product.product.price * product.quantity ))|number_format(2, ',', '.') }} €
-
                         </div>
+                        {% if product.product.isBest(1) %}
+                            <div class="col-4"> {{ (((product.product.price * product.quantity) * 0.10 ))|number_format(2, ',', '.') }} €</div>
+                            {% set totalAction =((product.product.price * product.quantity)  * 0.10 ) %}
+                            {% else %}
+                            {% set totalAction = null %}
+                        {% endif %}
                     </div>
-                {% set total = total + (product.product.price * product.quantity) %}
+                {% set total = total + ((product.product.price * product.quantity)- totalAction) %}
+{{ dump(totalAction) }}
                 {% endfor %}
                     <hr>
                     <strong>Zwischensumme : </strong> {{ (total)|number_format(2, ',', '.') }} €<br/>
@@ -71,4 +78,4 @@
     </section>
 {% endblock %}
 
-
+{#TODO shows the discount but I still have to work on sending this promotion on stripe#}
