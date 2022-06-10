@@ -51,22 +51,21 @@
                             {{ ((product.product.price * product.quantity ))|number_format(2, ',', '.') }} €
                         </div>
                         {% if product.product.isBest(1) %}
-                            <div class="col-4"> {{ (((product.product.price * product.quantity) * 0.10 ))|number_format(2, ',', '.') }} €</div>
-                            {% set totalAction =((product.product.price * product.quantity)  * 0.10 ) %}
+                            <div class="col-4"> {{ (((product.product.price * product.quantity) *0.10 ))|number_format(2, ',', '.') }} €</div>
+                            {% set totalAction =((product.product.price * product.quantity)*0.10 ) %}
                             {% else %}
-                            {% set totalAction = null %}
                         {% endif %}
                     </div>
-                {% set total = total + ((product.product.price * product.quantity)- totalAction) %}
+                {% set total = total + ((product.product.price * product.quantity)) %}
 {{ dump(totalAction) }}
                 {% endfor %}
                     <hr>
-                    <strong>Zwischensumme : </strong> {{ (total)|number_format(2, ',', '.') }} €<br/>
+                    <strong>Zwischensumme : </strong> {{ (total - totalAction)|number_format(2, ',', '.') }} €<br/>
                     <strong>Versandkosten : </strong> {{ (carrier.price)|number_format(2, ',', '.') }} €
                     <hr>
-                    <strong>Gesamtsumme : </strong> {{ ((total) + (carrier.price))|number_format(2, ',', '.') }} €
+                    <strong>Gesamtsumme : </strong> {{ ((total - totalAction) + (carrier.price))|number_format(2, ',', '.') }} €
                     <a href="{{ path('app_stripe_create_session', {'reference': reference}) }}" class="btn btn-dark btn-block m-5" id="checkout-button">
-                        Zahlen | {{ ((total) + (carrier.price))|number_format(2, ',', '.') }} €</a>
+                        Zahlen | {{ ((total - totalAction) + (carrier.price))|number_format(2, ',', '.') }} €</a>
                 </div>
 
 
