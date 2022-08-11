@@ -52,6 +52,9 @@ class Products
     #[ORM\Column(type: 'boolean')]
     private $isBest;
 
+    #[ORM\ManyToOne(targetEntity: Promo::class, inversedBy: 'products')]
+    private $promo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +155,18 @@ class Products
     public function setIsBest(bool $isBest): self
     {
         $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    public function getPromo(): ?Promo
+    {
+        return $this->promo;
+    }
+
+    public function setPromo(?Promo $promo): self
+    {
+        $this->promo = $promo;
 
         return $this;
     }

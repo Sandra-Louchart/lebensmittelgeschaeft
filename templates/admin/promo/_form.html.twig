@@ -1,0 +1,8 @@
+<div class="container">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="text-center">
+        <button class="btn btn-primary btn m-3">{{ button_label|default('Bestätigen') }}</button>
+    </div>
+{{ form_end(form) }}
+</div>

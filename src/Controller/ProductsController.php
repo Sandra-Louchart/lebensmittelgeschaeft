@@ -74,7 +74,7 @@ class ProductsController extends AbstractController
 
     }
 
-    #[Route('/produkt/{id}', name: 'app_product_show', methods: ['GET'])]
+    #[Route('/product/{id}', name: 'app_product_show', methods: ['GET'])]
     public function show(Products $product): Response
     {
         return $this->render('products/show.html.twig', [

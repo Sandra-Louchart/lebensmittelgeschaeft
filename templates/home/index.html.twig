@@ -9,6 +9,7 @@
 {% block title %} Willkommen in unseren Bioladen {% endblock %}
 
 {% block body %}
+    <section class="blockHome">
     <section class="homeTop d-flex page-content justify-content-center">
         <img class="homePicture" src="images/bild2.jpg" alt="Erstes Bild">
         <div class="homeTxt d-flex flex-column justify-content-around align-items-center align-self-center">
@@ -30,58 +31,58 @@
                 </div>
             </div>
     </section>
-    <section class="col-12 m-5">
-            <div class="container">
-                <h2 class="title-uns text-center mt-5">Unsere beruflichen Werte </h2>
-            <div class="row no-gutters">
-                <div class="col-md-3 text-center d-flex align-self-stretch ">
-                    <div class="media block-6 services mb-md-0 mb-4">
-                        <div class="d-flex justify-content-center align-items-center mb-2">
-                            <img src="images/expedie.png">
+    <section class=>
+        <div class="mx-lg-5 pt-5">
+            <h2 class="text-center font-weight-bold"> Unsere beruflichen Werte  </h2>
+            <div class="d-flex justify-content-center">
+                <div class="d-flex align-items-center m-5">
+                    <div class="time-content">
+                        <div class="blocks">
+                            <div class="block zoom">
+                                <div class="block-content">
+                                    <span class="text-secondary h2">1. </span>
+                                    <span class="font-weight-secondary"><strong>Lieferung in 48 Stunden</strong>
+                                    . Wählen Sie Ihr Lieferunternehmen</span>
+                                </div>
+                                <div class="block-content picto"><img src="images/expedie.png"></div>
+                            </div>
+                            <div class="block zoom">
+                                <div class="block-content picto"><img src="images/aliments.png">
+                                </div>
+                                <div class="block-content"><span class="text-secondary h2">2. </span>
+                                    <span class="font-weight-bold"><strong>Immer frische Produkte</strong>.
+                                        Ware sicher verpackt</span>.
+                                </div>
+                            </div>
+                            <div class="block zoom">
+                                <div class="block-content"><span class="text-secondary h2">3. </span>
+                                    <span class="font-weight-bold"> <strong>Lokales Produkt</strong>.
+                                        Produkte von Ihren Bauern</span>
+                                </div>
+                                <div class="block-content picto "><img src="images/lokal.png">
+                                </div>
+                            </div>
+                            <div class="block zoom">
+                                <div class="block-content picto"><img src="images/bio.png">
+                                </div>
+                                <div class="block-content "><span class="text-secondary h2">4. </span>
+                                    <span class="font-weight-bold"><strong>Bio-Produkt</strong>.
+                                        Qualitätsprodukt</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="media-body">
-                            <h3 class="heading">Lieferung in 48 Stunden</h3>
-                            <span>Wählen Sie Ihr Lieferunternehmen</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 text-center d-flex align-self-stretch ">
-                    <div class="media block-6 services mb-md-0 mb-4">
-                        <div class="d-flex justify-content-center align-items-center mb-2">
-                            <img src="images/aliments.png">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="heading">Immer frische Produkte</h3>
-                            <span>Ware sicher verpackt</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 text-center d-flex align-self-stretch ">
-                    <div class="media block-6 services mb-md-0 mb-4">
-                        <div class="d-flex justify-content-center align-items-center mb-2">
-                            <img src="images/lokal.png">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="heading">Lokales Produkt</h3>
-                            <span>Produkte von Ihren Bauern</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 text-center d-flex align-self-stretch ">
-                    <div class="media block-6 services mb-md-0 mb-4">
-                        <div class="d-flex justify-content-center align-items-center mb-2">
-                            <img src="images/bio.png">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="heading">Bio-Produkt</h3>
-                            <span>Qualitätsprodukt</span>
+                        <div class="timeline">
+                            <div class="box">
+                                <div class="arrow"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    </section>
+
 {% endblock %}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}

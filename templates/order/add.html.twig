@@ -50,14 +50,13 @@
                         <div class="col-4">
                             {{ ((product.product.price * product.quantity ))|number_format(2, ',', '.') }} €
                         </div>
-                        {% if product.product.isBest(1) %}
-                            <div class="col-4"> {{ (((product.product.price * product.quantity) *0.10 ))|number_format(2, ',', '.') }} €</div>
-                            {% set totalAction =((product.product.price * product.quantity)*0.10 ) %}
-                            {% else %}
-                        {% endif %}
+{#                        {% if product.product.isBest(1) %}#}
+{#                            <div class="col-4"> {{ (((product.product.price * product.quantity) *0.10 ))|number_format(2, ',', '.') }} €</div>#}
+{#                            {% set totalAction =((product.product.price * product.quantity)*0.10 ) %}#}
+{#                            {% else %}#}
+{#                        {% endif %}#}
                     </div>
                 {% set total = total + ((product.product.price * product.quantity)) %}
-{{ dump(totalAction) }}
                 {% endfor %}
                     <hr>
                     <strong>Zwischensumme : </strong> {{ (total - totalAction)|number_format(2, ',', '.') }} €<br/>

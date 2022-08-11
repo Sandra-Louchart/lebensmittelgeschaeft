@@ -1,0 +1,20 @@
+{% extends 'base_admin.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block title %}Bearbeiten Angebote{% endblock %}
+
+{% block body %}
+    <section class="blockAdmin">
+        <h1 class="title text-center mb-5 mt-xxl-5">Bearbeiten Angebote</h1>
+        <div class = "container">
+            {{ include('admin/promo/_form.html.twig', {'button_label': 'Bestätigen'}) }}
+
+            <a class="btn btn-primary btn m-3" href="{{ path('app_admin_promo_index') }}">Zurück zur Liste</a>
+
+            {{ include('admin/promo/_delete_form.html.twig') }}
+        </div>
+
+    </section>
+{% endblock %}

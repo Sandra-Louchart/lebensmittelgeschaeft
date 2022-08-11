@@ -7,9 +7,7 @@
   .homePicture {
     object-position: center;
     object-fit: cover;
-  }
-
-  img {
+    margin: 0;
     position: absolute;
     height: 100vh;
     width: 100%;
@@ -20,6 +18,11 @@
     box-sizing: border-box;
     z-index: -1;
     opacity: 1;
+
+  }
+
+  img {
+
   }
 
   .homeTxt {
@@ -67,71 +70,29 @@
     }
   }
 
-  .main-title:first-of-type {
-    /* For increasing performance
-                       ID/Class should've been used.
-                       For a small demo
-                       it's okaish for now */
-    animation: showup 7s;
-  }
 
-  .main-title:last-of-type {
-    animation: reveal 7s;
+}
+@media screen and (max-width: 850px) {
 
-  }
-
-  .main-title:last-of-type span {
-    animation: slidein 7s;
-  }
-
-  @keyframes showup {
-    0% {
-      opacity: 0;
-    }
-    20% {
-      opacity: 0;
-    }
-    80% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
+  .main-title {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: $font-size-h3;
+    span {
+      font-size: $font-size-h4;
     }
   }
+}
+@media screen and (max-width: 650px) {
 
-  @keyframes slidein {
-    0% {
-      margin-left: -50vw;
-      opacity: 0;
-    }
-    20% {
-      margin-left: -40vw;
-      opacity: 0;
-    }
-    35% {
-      margin-left: -20px;
-    }
-    100% {
-      margin-left: 0px;
-    }
-  }
-
-  @keyframes reveal {
-    0% {
-      width: 0;
-    }
-    20% {
-      width: 60vw;
-    }
-    30% {
-      width: 100vw;
-    }
-    80% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      width: 100vw;
+  .main-title {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: $font-size-h4;
+    span {
+      display: none;
     }
   }
 }
@@ -155,4 +116,124 @@
   margin-bottom: $spacing-4;
   color: $idontknow;
   text-align: center;
+}
+
+
+.box {
+  width: 80vw;
+  height: 1vh;
+}
+
+.arrow {
+  --pos-x1: 0;
+  --pos-x2: calc(100% - (1/50 * 100%));
+  --pos-y1: calc(1/3 * 100%);
+  --pos-y2: calc(2/3 * 100%);
+
+  width: 100%;
+  height: 100%;
+  background: $secondary;
+
+  clip-path: polygon(
+                  var(--pos-x1) var(--pos-y1),
+                  var(--pos-x2) var(--pos-y1),
+                  var(--pos-x2) 0,
+                  100% 50%,
+                  var(--pos-x2) 100%,
+                  var(--pos-x2) var(--pos-y2),
+                  var(--pos-x1) var(--pos-y2)
+  );
+}
+
+.blocks {
+  display: flex;
+  flex-direction: row;
+}
+
+.block-content {
+  height: 100px;
+  margin: 75px 0 75px;
+}
+
+.block {
+  width: 25%;
+}
+
+.picto {
+  text-align: center;
+}
+
+.timeline {
+  position: absolute;
+  top: 200px;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.time-content {
+  position: relative;
+
+}
+
+.zoom {
+  transition: transform .2s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.2); /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+@media (max-width: 1500px) {
+  .timeline {
+    top: 210px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .timeline {
+    display: none;
+  }
+
+  .block-content {
+    margin: 20px 0 20px;
+  }
+}
+
+@media (max-width: 800px) {
+
+  .blocks {
+    flex-direction: column;
+  }
+  .block  {
+    display: flex;
+    width: 80%;
+    margin-left: 10%;
+  }
+  .block:nth-child(odd){
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .block-content {
+    margin: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .block {
+    display: flex;
+    flex-direction: column;
+  }
+  .block:nth-child(odd){
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .block-content{
+    margin: 0;
+  }
+  .picto{
+    margin-bottom: 30px;
+  }
+
+
 }

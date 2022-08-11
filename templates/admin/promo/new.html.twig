@@ -1,0 +1,16 @@
+{% extends 'base_admin.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block title %}New Promo{% endblock %}
+
+{% block body %}
+    <section class="blockAdmin">
+        <h1 class="title text-center mb-5 mt-xxl-5">Neu Angebote</h1>
+        <div class = "container">
+            {{ include('admin/promo/_form.html.twig') }}
+            <a class="col btn btn-primary mb-sm-2 mb-2 btn" href="{{ path('app_admin_promo_index') }}">Zurück zur Liste</a>
+        </div>
+    </section>
+{% endblock %}

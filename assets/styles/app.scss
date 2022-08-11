@@ -9,8 +9,10 @@ body {
    h1, h2, h3, h4 {
         font-family: $font-title;
     }
-
-    margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
     color: $dark;
     font-family: $font-text;
 
